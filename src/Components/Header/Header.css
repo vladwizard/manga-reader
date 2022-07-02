@@ -6,6 +6,8 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   background: gainsboro;
+  background: #303035;
+  text-decoration: none;
 }
 .header > div {
   display: flex;
@@ -15,9 +17,21 @@
   margin-left: 20px;
   font-size: 40px;
   text-decoration: none;
+  color: white;
 }
 .header .findInput {
   margin: auto;
+  background: #373740;
+  padding: 10px;
+  border-radius: 15px;
+  height: 75%;
+  width: 75%;
+  font-size: 1.2em;
+  color: white;
+  outline: 2px steelblue solid;
+}
+.header .findInput:focus {
+  box-shadow: 0 0 10px steelblue;
 }
 
 /*# sourceMappingURL=Header.css.map */

@@ -2,7 +2,11 @@
   display: grid;
   flex-wrap: wrap;
   grid-template-columns: repeat(4, 1fr);
-  padding: 0 10%;
+  grid-gap: 2vmin;
+  width: 1280px;
+  min-width: 60%;
+  max-width: 98%;
+  margin: 30px auto 0 auto;
 }
 
 /*# sourceMappingURL=Main.css.map */

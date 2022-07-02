@@ -59,6 +59,7 @@ export default function () {
                 </div>
             </div>
             <div className='chapterArea'>
+                <div className='hiddenCell'></div>
                 {chapters.map((item, index) =>
                     <Link className='chapterLink' to={item}>Глава {index+1}</Link>
                 )}

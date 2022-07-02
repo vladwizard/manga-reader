@@ -35,7 +35,9 @@ export default function ({mangaData}: { mangaData: any }) {
             <div className='coverBlock'>
                 <img className='cover' src={coverImage}></img>
             </div>
+            <div className='titleBlock'>
             <h2 className="title">{title}</h2>
+            </div>
         </Link>
     )
 }

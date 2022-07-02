@@ -1,3 +1,6 @@
+$primary-color: #303035;
+$lighter-color: #373740;
+$text-color: white;
 .header {
   box-sizing: border-box;
   padding: 0 15%;
@@ -6,6 +9,8 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   background: gainsboro;
+  background: $primary-color;
+  text-decoration: none;
 
   > div {
     display: flex;
@@ -16,11 +21,22 @@
     margin-left: 20px;
     font-size: 40px;
     text-decoration: none;
-    //color: steelblue;
+    color: $text-color;
   }
 
   .findInput{
     margin: auto;
+    background: $lighter-color;
+    padding: 10px;
+    border-radius: 15px;
+    height: 75%;
+    width: 75%;
+    font-size: 1.2em;
+    color: $text-color;
+    outline: 2px steelblue solid;
     //height: 30px;
+  }
+  .findInput:focus{
+    box-shadow: 0 0 10px steelblue;
   }
 }

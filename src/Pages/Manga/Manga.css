@@ -1,8 +1,10 @@
 .MangaPageWrapper {
   margin: 10vmin auto 0 auto;
   width: max-content;
+  border-radius: 8px;
 }
 .MangaPageWrapper .top {
+  border-radius: 8px 8px 0 0;
   display: flex;
   background: white;
   height: 400px;
@@ -15,6 +17,7 @@
   justify-content: center;
 }
 .MangaPageWrapper .top .imgBlock img {
+  border-radius: 8px;
   height: 100%;
 }
 .MangaPageWrapper .top .infoBlock {
@@ -23,7 +26,8 @@
   height: 100%;
   min-width: 400px;
   max-width: 800px;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   width: max-content;
 }
 .MangaPageWrapper .top .infoBlock .title {
@@ -37,15 +41,32 @@
   overflow: auto;
 }
 .MangaPageWrapper .chapterArea {
-  padding: 0 20px;
+  border-radius: 0 0 8px 8px;
+  padding: 9px 16px;
   width: 100%;
-  height: max-content;
+  min-height: 200px;
   background: gainsboro;
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  height: 320px;
+  flex-wrap: wrap;
+}
+.MangaPageWrapper .chapterArea .hiddenCell {
+  width: 85px;
+  height: 28px;
 }
 .MangaPageWrapper .chapterArea .chapterLink {
+  box-sizing: border-box;
+  width: 85px;
+  margin: 0 5px;
+  padding: 2px 5px;
+  background: white;
   text-decoration: none;
+  color: black;
+}
+.MangaPageWrapper .chapterArea .chapterLink:hover {
+  opacity: 0.7;
 }
 
 /*# sourceMappingURL=Manga.css.map */

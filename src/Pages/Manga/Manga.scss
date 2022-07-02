@@ -1,18 +1,23 @@
+$border-radius:8px;
 .MangaPageWrapper {
   margin: 10vmin auto 0 auto;
   width: max-content;
+  border-radius: $border-radius;
   .top{
+    border-radius: $border-radius $border-radius 0 0;
     display: flex;
     background:white ;
     height: 400px;
     width: max-content;
 
     .imgBlock {
+
       background: #eee;
       height: 100%;
       display: flex;
       justify-content: center;
       img{
+        border-radius: $border-radius;
         height: 100%;
       }
     }
@@ -22,7 +27,8 @@
       height: 100%;
       min-width: 400px;
       max-width: 800px;
-      display: grid;
+      display: flex;
+      flex-direction: column;
       width: max-content;
       .title{
         font-size: 2em;
@@ -39,16 +45,33 @@
 
   }
   .chapterArea{
-    padding: 0 20px;
+    border-radius: 0 0 $border-radius $border-radius;
+    padding: 9px 16px;
     width: 100%;
-    height: max-content;
+    min-height: 200px;
     background: gainsboro;
-    display: grid;
-    grid-template-columns: repeat(6,1fr);
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    height: 320px;
+    flex-wrap: wrap;
 
-    //height: max-content;
+    .hiddenCell{
+      width: 85px;
+      height: 28px;
+    }
     .chapterLink{
+      box-sizing: border-box;
+
+      width: 85px;
+      margin: 0 5px;
+      padding: 2px 5px;
+      background: white;
       text-decoration: none;
+      color: black;
+    }
+    .chapterLink:hover{
+      opacity: 0.7;
     }
   }
 
