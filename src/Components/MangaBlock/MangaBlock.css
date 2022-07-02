@@ -1,0 +1,23 @@
+.mangaBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 400px;
+  width: 300px;
+  margin: 10px auto;
+  text-decoration: none;
+}
+.mangaBlock .coverBlock {
+  width: 300px;
+  display: flex;
+  justify-content: center;
+}
+.mangaBlock .coverBlock img {
+  height: 300px;
+}
+.mangaBlock .title {
+  text-align: center;
+  color: #555;
+}
+
+/*# sourceMappingURL=MangaBlock.css.map */

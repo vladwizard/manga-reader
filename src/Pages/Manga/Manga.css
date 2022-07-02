@@ -1,0 +1,51 @@
+.MangaPageWrapper {
+  margin: 10vmin auto 0 auto;
+  width: max-content;
+}
+.MangaPageWrapper .top {
+  display: flex;
+  background: white;
+  height: 400px;
+  width: max-content;
+}
+.MangaPageWrapper .top .imgBlock {
+  background: #eee;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+.MangaPageWrapper .top .imgBlock img {
+  height: 100%;
+}
+.MangaPageWrapper .top .infoBlock {
+  box-sizing: border-box;
+  padding: 5px 15px;
+  height: 100%;
+  min-width: 400px;
+  max-width: 800px;
+  display: grid;
+  width: max-content;
+}
+.MangaPageWrapper .top .infoBlock .title {
+  font-size: 2em;
+}
+.MangaPageWrapper .top .infoBlock .description {
+  box-sizing: content-box;
+  white-space: pre-wrap;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+.MangaPageWrapper .chapterArea {
+  padding: 0 20px;
+  width: 100%;
+  height: max-content;
+  background: gainsboro;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+.MangaPageWrapper .chapterArea .chapterLink {
+  text-decoration: none;
+}
+
+/*# sourceMappingURL=Manga.css.map */

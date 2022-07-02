@@ -1,0 +1,26 @@
+.header {
+  box-sizing: border-box;
+  padding: 0 15%;
+  width: 100%;
+  height: 60px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background: gainsboro;
+
+  > div {
+    display: flex;
+    align-items: center;
+
+  }
+  .linkToMain{
+    margin-left: 20px;
+    font-size: 40px;
+    text-decoration: none;
+    //color: steelblue;
+  }
+
+  .findInput{
+    margin: auto;
+    //height: 30px;
+  }
+}

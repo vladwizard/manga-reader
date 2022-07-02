@@ -1,0 +1,8 @@
+.Main {
+  display: grid;
+  flex-wrap: wrap;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 0 10%;
+}
+
+/*# sourceMappingURL=Main.css.map */

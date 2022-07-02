@@ -1,0 +1,11 @@
+.chapterPage {
+  margin: auto;
+  width: max-content;
+  display: flex;
+  flex-direction: column;
+}
+.chapterPage img {
+  width: 1080px;
+}
+
+/*# sourceMappingURL=Chapter.css.map */
