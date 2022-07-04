@@ -1,12 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 
-import axios from "axios";
-import debounce from "lodash.debounce";
 import {
     BrowserRouter,
     Routes,
     Route,
-    Link,
 } from "react-router-dom";
 
 import './App.css';
@@ -18,18 +15,25 @@ import Chapter from "./Pages/Chapter/Chapter";
 
 function App() {
 
+    const [find, setFind] = useState('');
     return (
         <BrowserRouter>
             <div className="wrapper">
-                <Header/>
-
                 <Routes>
-                    <Route path='/' element={<MainPage/>}/>
-
-                    <Route path='/:id' element={<MangaPage />}/>
-                    <Route path='/:id/:idChapter' element={<Chapter />}/>
+                    <Route path='/*' element={
+                        <div>
+                            <Header setFind={setFind}/>
+                            <Routes>
+                                <Route path='/' element={
+                                        <MainPage findLine={find}/>
+                                }/>
+                                <Route path='/:id' element={
+                                        <MangaPage/>}/>
+                            </Routes>
+                        </div>
+                    }/>
+                    <Route path='/:id/:idChapter' element={<Chapter/>}/>
                 </Routes>
-
             </div>
         </BrowserRouter>
     );

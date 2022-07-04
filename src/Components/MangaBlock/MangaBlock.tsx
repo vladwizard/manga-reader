@@ -4,14 +4,15 @@ import './MangaBlock.css'
 import {Link} from "react-router-dom";
 
 export default function ({mangaData}: { mangaData: any }) {
-// console.log(mangaData)
+    // console.log(id)
     const id = mangaData.id;
-    const title = mangaData.attributes.title.en;
+    const title = Object.values(mangaData.attributes.title)[0] as string;
+    // console.log(Object.values(mangaData.attributes.title)[0])
     const description = mangaData.attributes.description.en
     const cover_id: string = mangaData.relationships.find((item: any) => item.type == 'cover_art').id;
 
     const coverImageApi = (id: string, fileName: string) => {
-        return 'https://uploads.mangadex.org/covers/' + id + '/' + fileName
+        return 'https://uploads.mangadex.org/covers/' + id + '/' + fileName+'.256.jpg'
     }
 
     const [coverImage, setCoverImage] = useState<any>();
@@ -26,17 +27,21 @@ export default function ({mangaData}: { mangaData: any }) {
                 }
             )
 
-    }, [])
+    }, [mangaData])
 
     // console.log(coverImage)
     // console.log(description)
     return (
         <Link to={id} className='mangaBlock' title={description}>
-            <div className='coverBlock'>
-                <img className='cover' src={coverImage}></img>
+
+            {title && <div className='titleBlock'>
+                <h2 className="title"
+                    style={{'fontSize': (1.5 - 0.4 * Math.trunc(title.length / 40)) + 'em'}}>{title}</h2>
             </div>
-            <div className='titleBlock'>
-            <h2 className="title">{title}</h2>
+            }
+            <div className='coverBlock'
+                 style={{'backgroundImage': 'url(' + coverImage + ')'}}
+            >
             </div>
         </Link>
     )

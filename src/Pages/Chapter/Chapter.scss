@@ -1,9 +1,72 @@
-.chapterPage{
-  margin: auto;
-  width: max-content;
-  display: flex;
-  flex-direction: column;
-  img{
-    width: 1080px;
+.chapterPage {
+  .pageArea {
+    margin: auto;
+
+    max-width: 1080px;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    img {
+      width: 100%;
+    }
+  }
+  > .menu {
+    position: fixed;
+    .menuButton {
+      background: none;
+      z-index: 100;
+
+      border: none;
+    }
+
+    .extendedMenu {
+      padding: 0 10px;
+      display: flex;
+      flex-direction: column;
+      height: 80%;
+      grid-gap: 20px;
+      .mangaPageLink{
+        text-decoration: none;
+        color: black;
+        font-size: 2em;
+        padding: 0 9px;
+        background: lightskyblue;
+        border-radius: 10px;
+      }
+      .chapterArea {
+        height: 80%;
+        max-height: 600px;
+        display: flex;
+        flex-direction: column;
+        overflow: auto;
+
+        .chapterLink{
+          font-size: 1.5em;
+          text-decoration: none;
+          color: black;
+          background: white;
+          padding: 0 9px;
+        }
+.chapterLink:hover{opacity: 0.7}
+      }
+    }
+  }
+
+  .activeMenu {
+    height: 100vh;
+    width: 300px;
+    background: antiquewhite;
+
+    .menuButton {
+      transform: scale(-1, 1);
+    }
+
   }
 }
+//@media (orientation: portrait) {
+//  .pageArea {
+//    padding-top: 50px;
+//  }
+//}

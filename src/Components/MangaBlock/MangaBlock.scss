@@ -2,36 +2,40 @@ $border-radius:8px;
 
 .mangaBlock {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: column-reverse;
+
   background: lightgray;
   text-decoration: none;
   border-radius: $border-radius;
   .coverBlock {
-    width: 100%;
-    height: 100%;
+    flex: 1;
+    //background: navy;
+    background-size: cover;
+    //background-repeat: no-repeat;
+    //background-position: 50%;
 
-    display: flex;
-    justify-content: center;
-
-    img {
-      border-radius: $border-radius $border-radius 0 0;
-      height: 100%;
-      width: 100%;
-    }
+    //img {
+    //  border-radius: $border-radius $border-radius 0 0;
+    //  width: 100%;
+    //
+    //}
 
   }
 
   .titleBlock {
+    padding: 0 5px;
     margin: 5px 0;
     min-height: 80px;
+    width: 100%;
     display: flex;
     align-items: center;
 
+
+
     .title {
+      width: 100%;
       text-align: center;
-      color: #555;
-      font-size: 1.5em;
+      //font-size: 1.5em;
       white-space: pre-wrap;
       color: black;
     }

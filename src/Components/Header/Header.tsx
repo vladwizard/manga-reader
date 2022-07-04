@@ -1,10 +1,18 @@
-import React from "react";
-import {Link} from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import {Link, useParams} from "react-router-dom";
 import './Header.css'
 
-export default function () {
 
-    return(
+export default function ({setFind}: { setFind: any }) {
+    const id = useParams()['*'];
+
+    useEffect(() => {
+        setFind('')
+        setHandleFind('')
+    }, [id])
+
+    const [handleFind, setHandleFind] = useState('')
+    return (
         <div className='header'>
             <div>
                 <Link className='linkToMain' to='/'>
@@ -14,7 +22,15 @@ export default function () {
             <div>
                 {/*<input className='findInput'/>*/}
                 <input type="search" className="findInput"
-                       placeholder="Search..." aria-label="Search"/>
+                       placeholder="Search..." aria-label="Search"
+                       value={handleFind}
+                       onChange={event => {
+                           setHandleFind(event.target.value)
+
+                           setFind(event.target.value)
+
+                       }}
+                />
             </div>
             <div>
             </div>

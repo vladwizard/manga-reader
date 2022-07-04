@@ -1,12 +1,29 @@
-.Main{
+.mangaArea{
 
   display: grid;
   flex-wrap: wrap;
-  grid-template-columns: repeat(4,1fr);
+  grid-template-columns: repeat(5,1fr);
+  grid-auto-rows: 350px;
   grid-gap: 2vmin;
+  margin: 0 100px;
   width: 1280px;
-  min-width: 60%;
-  max-width: 98%;
+  //min-width: 60%;
+  //max-width: 98%;
+}
+.MainPage{
 
+  width: max-content;
   margin: 30px auto 0 auto;
+
+  display: flex;
+  align-items: center;
+
+  .paginationButton{
+    height: 200px;
+    width: 100px;
+  }
+}
+.pageNumber{
+  width: max-content;
+  margin: 10px auto 0 auto;
 }

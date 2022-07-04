@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["MangaBlock.scss"],"names":[],"mappings":"AAEA;EACE;EACA;EACA;EACA;EACA;EACA,eARa;;AASb;EACE;EACA;EAEA;EACA;;AAEA;EACE;EACA;EACA;;AAKJ;EACE;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;EACA","file":"MangaBlock.css"}
+{"version":3,"sourceRoot":"","sources":["MangaBlock.scss"],"names":[],"mappings":"AAEA;EACE;EACA;EAEA;EACA;EACA,eARa;;AASb;EACE;EAEA;;AAYF;EACE;EACA;EACA;EACA;EACA;EACA;;AAIA;EACE;EACA;EAEA;EACA","file":"MangaBlock.css"}
