@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {Link, useParams} from "react-router-dom";
 import axios from "axios";
 
@@ -15,7 +15,7 @@ export default function () {
 
     const [chapters, setChapters] = useState<any[]>([]);
 
-    const apiChapterInfo = 'https://api.mangadex.org/chapter/'+idChapter
+    const apiChapterInfo = 'https://api.mangadex.org/chapter/' + idChapter
 
     console.log('https://api.mangadex.org/at-home/server/' + idChapter)
     useEffect(() => {
@@ -33,9 +33,20 @@ export default function () {
     }
 
     const [menuToggle, setMenuToggle] = useState(false);
+
+    // const LinkAreaRef = useRef(null);
+    // useEffect(() => {
+    //     console.log(15523, LinkAreaRef)
+    //     if (LinkAreaRef != null) {
+    //         if (LinkAreaRef.current != null) {
+    //             document.getElementsByClassName('chapterArea')[0].scrollTo(0,1200)
+    //         }
+    //     }
+    // }, [LinkAreaRef, LinkAreaRef.current])
+
     return (
         <div className='chapterPage'>
-            <div className={['menu',menuToggle ? 'activeMenu':''].join(' ')}>
+            <div className={['menu', menuToggle ? 'activeMenu' : ''].join(' ')}>
                 <button className='menuButton'
                         onClick={() => setMenuToggle(!menuToggle)}
                 >
@@ -48,16 +59,17 @@ export default function () {
                 {menuToggle &&
                 <div className='extendedMenu'>
                     <Link className='mangaPageLink' to={'/'}>Главная</Link>
-                    <Link className='mangaPageLink' to={'/'+id}>Страница манги</Link>
+                    <Link className='mangaPageLink' to={'/' + id}>Страница манги</Link>
                     <div className='chapterArea'>
                         {chapters.map((item) =>
-                            <Link className='chapterLink' key={item[0]} to={'/'+id+'/'+item[1]}>Глава {item[0] + 1}</Link>
+                            <Link className={['chapterLink', idChapter == item[1] ? 'active' : ''].join(' ')}
+                                  key={item[0]} to={'/' + id + '/' + item[1]}>Глава {item[0] + 1}</Link>
                         )}
                     </div>
+
                 </div>
                 }
             </div>
-
             <div className='pageArea'>
                 {pages.map((url, index) => <img key={index} src={getUrl(hash, url)}/>)}
             </div>

@@ -16,7 +16,7 @@ export default function ({setFind}: { setFind: any }) {
         <div className='header'>
             <div>
                 <Link className='linkToMain' to='/'>
-                    Главная
+                    Main
                 </Link>
             </div>
             <div>

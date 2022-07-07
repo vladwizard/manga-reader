@@ -42,7 +42,7 @@ export default function () {
         <div className='MangaPageWrapper'>
             <div className='top'>
                 <div className='imgBlock'>
-                    <img src={coverImage}/>
+                    <img src={coverImage} alt='coverArt'/>
                 </div>
                 <div className='infoBlock'>
                     <h1 className='title'>{title}</h1>
