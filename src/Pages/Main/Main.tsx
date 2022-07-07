@@ -28,17 +28,16 @@ export default function ({findLine}: { findLine: string }) {
 
     useEffect(() => {
         debounce(() =>
-
             axios.get(mangaApi
-                , {
-                    proxy: {
-                        host: 'https://vladwizard.github.io',
-                        port: 1,
-                    }
-                }
+                // , {
+                //     headers: {
+                //         'access-control-allow-origin': "https://vladwizard.github.io/:1"
+                //     }
+                // }
             )
                 .then(res => {
                     const data = res.data;
+                    console.log(res)
                     setMangas(data.data);
                 }), 150)()
     }, [findLine, page])
