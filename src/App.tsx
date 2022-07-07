@@ -18,7 +18,7 @@ function App() {
     const [find, setFind] = useState('');
     return (
         <BrowserRouter>
-            <div className="wrapper">
+            <div className="wrapper" >
                 <Routes>
                     <Route path='/*' element={
                         <div>
