@@ -29,13 +29,19 @@ export default function ({findLine}: { findLine: string }) {
     useEffect(() => {
         debounce(() =>
 
-
-        axios.get(mangaApi)
-            .then(res => {
-                const data = res.data;
-                setMangas(data.data);
-            }),150)()
-    }, [findLine,page])
+            axios.get(mangaApi
+                , {
+                    proxy: {
+                        host: 'https://vladwizard.github.io',
+                        port: 1,
+                    }
+                }
+            )
+                .then(res => {
+                    const data = res.data;
+                    setMangas(data.data);
+                }), 150)()
+    }, [findLine, page])
 
     return (
         <div>
@@ -51,11 +57,11 @@ export default function ({findLine}: { findLine: string }) {
                 </div>
                 <button className='paginationButton'
                         onClick={() => {
-                           setPage(page + 1)
+                            setPage(page + 1)
                         }}
                 >{paginationButtonSvg}</button>
             </div>
-            <p className='pageNumber'>Страница {page+1}</p>
+            <p className='pageNumber'>Страница {page + 1}</p>
         </div>
     )
 }

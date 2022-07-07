@@ -13,7 +13,9 @@ export default function () {
     const [hash, setHash] = useState('');
     const [pages, setPages] = useState([]);
 
-    const [chapters, setChapters] = useState<string[]>([]);
+    const [chapters, setChapters] = useState<any[]>([]);
+
+    const apiChapterInfo = 'https://api.mangadex.org/chapter/'+idChapter
 
     console.log('https://api.mangadex.org/at-home/server/' + idChapter)
     useEffect(() => {
@@ -48,8 +50,8 @@ export default function () {
                     <Link className='mangaPageLink' to={'/'}>Главная</Link>
                     <Link className='mangaPageLink' to={'/'+id}>Страница манги</Link>
                     <div className='chapterArea'>
-                        {chapters.map((item, index) =>
-                            <Link className='chapterLink' key={index} to={'/'+id+'/'+item}>Глава {index + 1}</Link>
+                        {chapters.map((item) =>
+                            <Link className='chapterLink' key={item[0]} to={'/'+id+'/'+item[1]}>Глава {item[0] + 1}</Link>
                         )}
                     </div>
                 </div>

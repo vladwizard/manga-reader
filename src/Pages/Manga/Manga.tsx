@@ -6,7 +6,6 @@ import {getChapters} from '../../orders'
 
 export default function () {
 
-
     const coverImageApi = (id: string, fileName: string) => {
         return 'https://uploads.mangadex.org/covers/' + id + '/' + fileName
     }
@@ -54,7 +53,7 @@ export default function () {
             <div className='chapterArea'>
                 <div className='hiddenCell'></div>
                 {chapters.map((item, index) =>
-                    <Link className='chapterLink' key={index} to={item}>Глава {index + 1}</Link>
+                    <Link className='chapterLink' key={item[0]} to={item[1]}>Глава {item[0]}</Link>
                 )}
             </div>
 
