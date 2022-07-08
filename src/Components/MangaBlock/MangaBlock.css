@@ -7,6 +7,7 @@
 }
 .mangaBlock .coverBlock {
   flex: 1;
+  border-radius: 8px 8px 0 0;
   background-size: cover;
 }
 .mangaBlock .titleBlock {

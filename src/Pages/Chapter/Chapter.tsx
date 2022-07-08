@@ -58,12 +58,12 @@ export default function () {
                 </button>
                 {menuToggle &&
                 <div className='extendedMenu'>
-                    <Link className='mangaPageLink' to={'/'}>Главная</Link>
-                    <Link className='mangaPageLink' to={'/' + id}>Страница манги</Link>
+                    <Link className='mangaPageLink link' to={'/'}>Главная</Link>
+                    <Link className='mangaPageLink link' to={'/' + id}>Страница манги</Link>
                     <div className='chapterArea'>
                         {chapters.map((item) =>
-                            <Link className={['chapterLink', idChapter == item[1] ? 'active' : ''].join(' ')}
-                                  key={item[0]} to={'/' + id + '/' + item[1]}>Глава {item[0] + 1}</Link>
+                            <Link className={['chapterLink', idChapter == item[1] ? 'active' : '','link'].join(' ')}
+                                  key={item[0]} to={'/' + id + '/' + item[1]}>{item[0]}</Link>
                         )}
                     </div>
 

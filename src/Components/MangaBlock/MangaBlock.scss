@@ -1,4 +1,4 @@
-$border-radius:8px;
+$border-radius: 8px;
 
 .mangaBlock {
   display: flex;
@@ -7,19 +7,11 @@ $border-radius:8px;
   background: lightgray;
   text-decoration: none;
   border-radius: $border-radius;
+
   .coverBlock {
     flex: 1;
-    //background: navy;
+    border-radius: $border-radius $border-radius 0 0;
     background-size: cover;
-    //background-repeat: no-repeat;
-    //background-position: 50%;
-
-    //img {
-    //  border-radius: $border-radius $border-radius 0 0;
-    //  width: 100%;
-    //
-    //}
-
   }
 
   .titleBlock {
@@ -29,7 +21,6 @@ $border-radius:8px;
     width: 100%;
     display: flex;
     align-items: center;
-
 
 
     .title {

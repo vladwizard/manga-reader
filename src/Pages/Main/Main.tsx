@@ -28,28 +28,11 @@ export default function ({findLine}: { findLine: string }) {
 
     useEffect(() => {
         debounce(() =>
-            // axios.get(mangaApi
-            //     // , {
-            //     //     headers: {
-            //     //         'access-control-allow-origin': "https://vladwizard.github.io/:1"
-            //     //     }
-            //     // }
-            // )
-            //     .then(res => {
-            //         const data = res.data;
-            //         console.log(res)
-            //         setMangas(data.data);
-            //     })
-                fetch(mangaApi, {
-                    credentials: 'omit',
-                }).then((response)=>{
-                    return response.json();
-                }).then((data1)=>{
-                    const data = data1.data;
-                    setMangas(data1.data);
-                    console.log(data1);
-                }).catch(err=>{
-                    console.log(err);
+            axios.get(mangaApi)
+                .then(res => {
+                    const data = res.data;
+                    console.log(res)
+                    setMangas(data.data);
                 })
 
             , 150)()
@@ -74,7 +57,7 @@ export default function ({findLine}: { findLine: string }) {
                         }}
                 >{paginationButtonSvg}</button>
             </div>
-            <p className='pageNumber'>Страница {page + 1}</p>
+            <p className='pageNumber'>Page {page + 1}</p>
         </div>
     )
 }
