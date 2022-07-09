@@ -7,7 +7,7 @@ import debounce from "lodash.debounce";
 
 
 export default function ({findLine}: { findLine: string }) {
-    const paginationButtonSvg = <svg viewBox="0 0 96 96" width='50px'>
+    const paginationButtonSvg = <svg viewBox="-6 0 96 96" width='60px'>
         <path
             d="M69.8437,43.3876,33.8422,13.3863a6.0035,6.0035,0,0,0-7.6878,9.223l30.47,25.39-30.47,25.39a6.0035,6.0035,0,0,0,7.6878,9.2231L69.8437,52.6106a6.0091,6.0091,0,0,0,0-9.223Z"/>
     </svg>
@@ -53,26 +53,30 @@ export default function ({findLine}: { findLine: string }) {
     }
 
     return (
-        <div>
-            <div className='MainPage'>
-                <button className='paginationButton' style={{'transform': 'scale(-1,1)'}}
+        <div className='MainPage'>
+            <div className='content'>
+
+                <button className='paginationButton leftButton' style={{'transform': 'scale(-1,1)'}}
                         onClick={() => {
                             if (page > 0) {
                                 changePage(page - 1)
                             }
                         }}
                 >{paginationButtonSvg}</button>
+
                 <div className='mangaArea'>
                     {mangas.map((item: object, i: number) => <MangaBlock key={i} mangaData={item}/>)}
 
                 </div>
-                <button className='paginationButton'
+                <button className='paginationButton rightButton'
                         onClick={() => {
                             changePage(page + 1)
                         }}
                 >{paginationButtonSvg}</button>
+                <p className='pageNumber'>Page {page + 1}</p>
             </div>
-            <p className='pageNumber'>Page {page + 1}</p>
+
+
         </div>
     )
 }

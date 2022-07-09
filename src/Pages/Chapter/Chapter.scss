@@ -30,6 +30,7 @@
       flex-direction: column;
       height: max-content;
       max-height: 80%;
+
       > * {
         border: solid black;
         border-width: 2px 0;
@@ -37,8 +38,6 @@
         margin: -2px 0 0 0;
 
       }
-
-
 
       .mangaPageLink {
 
@@ -48,9 +47,11 @@
         padding: 0 9px;
         background: white;
       }
-      .mangaPageLink:hover{
+
+      .mangaPageLink:hover {
         background: #ddd;
       }
+
       .chapterArea {
 
         flex: 1;
@@ -66,8 +67,9 @@
           background: white;
           padding: 0 9px;
         }
-        .chapterLink:hover{
-            background: #ddd;
+
+        .chapterLink:hover {
+          background: #ddd;
         }
 
 
@@ -89,6 +91,7 @@
 
   }
 }
+
 //@media (orientation: portrait) {
 //  .pageArea {
 //    padding-top: 50px;

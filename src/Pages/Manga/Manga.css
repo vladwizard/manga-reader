@@ -3,44 +3,32 @@
   width: 1280px;
   border-radius: 8px;
 }
+.MangaPageWrapper * {
+  margin: 0;
+}
 .MangaPageWrapper .top {
   border-radius: 8px 8px 0 0;
-  display: grid;
-  grid-template-columns: 300px auto;
-  grid-auto-rows: 400px;
+  display: block;
   background: white;
   height: 400px;
   width: 100%;
 }
-.MangaPageWrapper .top .imgBlock {
-  background: #eee;
-  display: block;
-  width: 300px;
-  height: 400px;
-}
-.MangaPageWrapper .top .imgBlock img {
+.MangaPageWrapper .top img {
   border-radius: 8px;
-  width: 100%;
+  width: 300px;
   height: 100%;
+  float: left;
+  margin-right: 10px;
 }
-.MangaPageWrapper .top .infoBlock {
-  box-sizing: border-box;
-  padding: 5px 15px;
-  width: 980px;
-  word-wrap: break-word;
-  display: flex;
-  flex-direction: column;
+.MangaPageWrapper .top .title {
+  font-size: 1.5em;
 }
-.MangaPageWrapper .top .infoBlock .title {
-  font-size: 2em;
-}
-.MangaPageWrapper .top .infoBlock .description {
+.MangaPageWrapper .top .description {
   box-sizing: content-box;
   white-space: pre-wrap;
   text-wrap: avoid;
   width: 100%;
   height: 100%;
-  overflow: auto;
   font-size: 1.3em;
 }
 .MangaPageWrapper .chapterArea {
@@ -55,11 +43,7 @@
   grid-auto-columns: max-content;
   grid-gap: 0 16px;
   overflow: auto;
-  flex-wrap: wrap;
   box-sizing: border-box;
-}
-.MangaPageWrapper .chapterArea .hidden {
-  visibility: hidden;
 }
 .MangaPageWrapper .chapterArea .chapterLink {
   box-sizing: border-box;
@@ -73,6 +57,39 @@
 }
 .MangaPageWrapper .chapterArea .chapterLink:hover {
   opacity: 0.7;
+}
+@media (orientation: portrait) {
+  .MangaPageWrapper {
+    width: 100vw;
+    font-size: 0.7rem;
+    margin-top: 0;
+    padding: 5px;
+  }
+  .MangaPageWrapper .top {
+    height: max-content;
+    display: block;
+  }
+  .MangaPageWrapper .top img {
+    float: left;
+    width: 40vw;
+    height: 60vw;
+    margin-right: 5px;
+  }
+  .MangaPageWrapper .top .title {
+    font-size: 2em;
+  }
+  .MangaPageWrapper .chapterArea {
+    height: max-content;
+    background: gainsboro;
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: repeat(2, minmax(max-content, 1fr));
+    grid-template-rows: max-content;
+    padding: 8px 8px;
+    grid-gap: 0 8px;
+    overflow: auto;
+    box-sizing: border-box;
+  }
 }
 
 /*# sourceMappingURL=Manga.css.map */

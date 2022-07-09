@@ -5,13 +5,10 @@ export function getChapters(id: string, setChapters: any) {
 
     axios.get('https://api.mangadex.org/manga/' + id + '/aggregate').then(res => {
 
-
-
         const r: [string, string][] = [];
 
-            let data = res.data;
+console.log(res.data)
 
-            const volumes: any = [];
 
             Object.values(res.data.volumes).forEach((volume: any) => Object.values(volume.chapters).forEach((chapter:any)=>r.push([(volume.volume!='none'?'V'+ volume.volume+' ':'') +'Chapter ' + chapter.chapter, chapter.id])));
             // Object.values(res.data.volumes).forEach((volume: any) => console.log(volume.chapter);

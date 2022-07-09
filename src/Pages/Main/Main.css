@@ -1,29 +1,99 @@
-.mangaArea {
+.MainPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.MainPage > .content {
+  height: 707.75px;
+  margin-top: 5vh;
   display: grid;
-  flex-wrap: wrap;
+  grid-template: "leftButton mangaArea rightButton" auto ". pages ." auto;
+}
+.MainPage > .content .leftButton {
+  grid-area: leftButton;
+}
+.MainPage > .content .rightButton {
+  grid-area: rightButton;
+}
+.MainPage > .content .paginationButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  height: 20vmin;
+  width: 10vmin;
+  max-height: 200px;
+  max-width: 100px;
+}
+.MainPage > .content .mangaArea {
+  grid-area: mangaArea;
+  display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-auto-rows: 350px;
   grid-gap: 2vmin;
-  margin: 0 100px;
-  width: 1280px;
+  padding: 0 5%;
+  max-width: 1280px;
 }
-
-.MainPage {
-  width: max-content;
-  height: 707.75px;
-  margin: 30px auto 0 auto;
-  display: flex;
-  align-items: center;
-}
-.MainPage .paginationButton {
-  height: 200px;
-  width: 100px;
-}
-
-.pageNumber {
+.MainPage > .content .pageNumber {
+  grid-area: pages;
   font-size: 1.5em;
   width: max-content;
+  height: min-content;
   margin: 10px auto 0 auto;
+}
+@media (orientation: landscape) and (max-width: 900px) {
+  .MainPage > .content {
+    font-size: 0.5rem;
+    height: 300px;
+    width: 86%;
+  }
+  .MainPage > .content .mangaArea {
+    grid-area: mangaArea;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-auto-rows: 145px;
+    grid-gap: 2vmin;
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+    box-sizing: border-box;
+    height: max-content;
+  }
+  .MainPage > .content .paginationButton {
+    margin: auto;
+    height: 80px;
+    width: 40px;
+  }
+  .MainPage > .content .paginationButton * {
+    width: 40px;
+  }
+}
+@media (orientation: portrait) {
+  .MainPage > .content {
+    grid-template: ". leftButton pages rightButton ." auto "mangaArea mangaArea mangaArea mangaArea mangaArea" auto;
+    grid-gap: 1vmin;
+    margin-top: 1vmin;
+  }
+  .MainPage > .content .paginationButton {
+    margin: auto;
+    height: 40px;
+    width: 40px;
+  }
+  .MainPage > .content .paginationButton * {
+    width: 30px;
+  }
+  .MainPage > .content .mangaArea {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 300px;
+    grid-gap: 5px;
+    padding: 5px;
+    width: 100vw;
+    font-size: 0.7rem;
+  }
+  .MainPage > .content .pageNumber {
+    margin: 0 10px;
+  }
 }
 
 /*# sourceMappingURL=Main.css.map */
