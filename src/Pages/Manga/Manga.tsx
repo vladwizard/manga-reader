@@ -31,37 +31,40 @@ export default function () {
 
     const [chapters, setChapters] = useState<string[][]>([]);
 
+
+
     //Вставка пусткых клеток в chapterArea
-    useEffect(() => {
-            if (chapters != null) {
-
-                let hidden = ['hidden', ''];
-                let nNormal = 0;
-
-                if (chapters.length > 9) {
-                    for (let i = 0; i < chapters.length; i++) {
-
-                        if (chapters[i][0].indexOf('.') == -1)
-                            nNormal++;
-                        if (parseInt(chapters[i][0].match(/(\d+)$/)![0]) % 10 != i % 10)
-                            chapters.splice(i, 0, hidden)
-                    }
-                }
-                if (nNormal != 0) {
-
-                    for (let i = 0; i < chapters.length; i++) {
-
-                        if (chapters[i][0].indexOf('.') != -1) {
-                            chapters.splice(i, 0, hidden)
-                            break
-                        }
-                    }
-                }
-            }
-        }
-        ,
-        [chapters]
-    )
+    // useEffect(() => {
+    //         if (chapters != null) {
+    //
+    //             // let hidden = ['hidden', ''];
+    //             // let nNormal = 0;
+    //             // for (let i = 0; i < chapters.length; i++) {
+    //             // if (chapters[i][0].indexOf('.') == -1) chapters[i][0] +='  '
+    //             // }
+    //             // if (chapters.length > 9) {
+    //             //     for (let i = 0; i < chapters.length; i++) {
+    //             //
+    //             //         if (chapters[i][0].indexOf('.') == -1)
+    //             //         if (parseInt(chapters[i][0].match(/(\d+)$/)![0]) % 10 != i % 10)
+    //             //             chapters.splice(i, 0, hidden)
+    //             //     }
+    //             // }
+    //             // if (nNormal != 0) {
+    //             //
+    //             //     for (let i = 0; i < chapters.length; i++) {
+    //             //
+    //             //         if (chapters[i][0].indexOf('.') != -1) {
+    //             //             chapters.splice(i, 0, hidden)
+    //             //             break
+    //             //         }
+    //             //     }
+    //             // }
+    //         }
+    //     }
+    //     ,
+    //     [chapters]
+    // )
 
     const id: any = useParams().id;
     const [mangaData, setMangaData] = useState<any>();

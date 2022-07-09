@@ -22,29 +22,44 @@ export default function ({findLine}: { findLine: string }) {
 
     const nInPage = 10
 
-    const mangaApi = 'https://api.mangadex.org/manga?' + ['limit=' + nInPage, findLine ? '&title=' + findLine : '', '&offset=' + nInPage * page].join('&');
+    const mangaApi = 'https://api.mangadex.org/manga?' + ['limit=' + nInPage, findLine ? '&title=' + findLine : '', '&offset=' + nInPage * (page + 1)].join('&');
+
 
     const [mangas, setMangas] = useState<any>([])
 
+    function getMangas(handlePage: number = page) {
+        axios.get('https://api.mangadex.org/manga?' + ['limit=' + nInPage, findLine ? '&title=' + findLine : '', '&offset=' + nInPage * handlePage].join('&'))
+            .then(res => {
+                const data = res.data;
+                console.log(res)
+
+                setMangas(data.data);
+            })
+    }
+
     useEffect(() => {
-        debounce(() =>
-            axios.get(mangaApi)
-                .then(res => {
-                    const data = res.data;
-                    console.log(res)
-                    setMangas(data.data);
-                })
+        debounce(() => {
+                getMangas()
 
+                if (page != 0)
+                    setPage(0)
+            }
             , 150)()
+    }, [findLine])
 
-    }, [findLine, page])
+    function changePage(newPage: number) {
+        setPage(newPage)
+        getMangas(newPage)
+    }
 
     return (
         <div>
             <div className='MainPage'>
                 <button className='paginationButton' style={{'transform': 'scale(-1,1)'}}
                         onClick={() => {
-                            if (page > 0) setPage(page - 1)
+                            if (page > 0) {
+                                changePage(page - 1)
+                            }
                         }}
                 >{paginationButtonSvg}</button>
                 <div className='mangaArea'>
@@ -53,7 +68,7 @@ export default function ({findLine}: { findLine: string }) {
                 </div>
                 <button className='paginationButton'
                         onClick={() => {
-                            setPage(page + 1)
+                            changePage(page + 1)
                         }}
                 >{paginationButtonSvg}</button>
             </div>

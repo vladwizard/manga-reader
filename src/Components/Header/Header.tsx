@@ -20,7 +20,6 @@ export default function ({setFind}: { setFind: any }) {
                 </Link>
             </div>
             <div>
-                {/*<input className='findInput'/>*/}
                 <input type="search" className="findInput"
                        placeholder="Search..." aria-label="Search"
                        value={handleFind}
