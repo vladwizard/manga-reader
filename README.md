@@ -1,46 +1,12 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+# Manga reader
+Application for reading manga, connected to the backend mangadex.org, implemented selection, search, chapter selection. Used React Router, axios, lodash.denounce.
+File's formates: scss and ts/tsx.
+## Main page
+![Screenshot 2022-07-09 00 47 17](https://user-images.githubusercontent.com/72702845/178074585-662b66cf-98e5-4645-8158-ac246e110a70.png)
+## Find funcrion
+![Screenshot 2022-07-09 00 48 30](https://user-images.githubusercontent.com/72702845/178074798-7cfc1ef8-56ec-49f2-9059-aa7863f99b40.png)
+## Manga page
+![Screenshot 2022-07-09 05 07 44](https://user-images.githubusercontent.com/72702845/178087672-93077914-1f4d-4154-a258-b070268b86c8.png)
+## Reading page
+![Screenshot 2022-07-09 05 08 41](https://user-images.githubusercontent.com/72702845/178087686-208bd07c-037b-4b77-a20e-14d3c29976c9.png)
+![Screenshot 2022-07-09 05 09 20](https://user-images.githubusercontent.com/72702845/178087711-8a205910-9397-46a0-b241-4e104f0c8862.png)
