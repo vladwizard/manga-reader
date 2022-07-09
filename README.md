@@ -11,6 +11,7 @@ File's formates: scss and ts/tsx.
 ![Screenshot 2022-07-09 05 08 41](https://user-images.githubusercontent.com/72702845/178087686-208bd07c-037b-4b77-a20e-14d3c29976c9.png)
 ![Screenshot 2022-07-09 05 09 20](https://user-images.githubusercontent.com/72702845/178087711-8a205910-9397-46a0-b241-4e104f0c8862.png)
 ##Adapting layout Iphone 12 pro sceens
+
 ![Screenshot 2022-07-09 18 54 40](https://user-images.githubusercontent.com/72702845/178113204-80a3b2e6-91be-49df-b5c4-d7878b29a5e5.png)
 ![Screenshot 2022-07-09 18 54 50](https://user-images.githubusercontent.com/72702845/178113205-0c9da38e-18d7-4631-8af1-6491e6c6e112.png)
 ![Screenshot 2022-07-09 18 55 26](https://user-images.githubusercontent.com/72702845/178113206-79cbff2e-c97d-4edd-9fb7-d27fbce1063a.png)
