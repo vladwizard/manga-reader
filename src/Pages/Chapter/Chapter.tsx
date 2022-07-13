@@ -13,11 +13,8 @@ export default function () {
     const [hash, setHash] = useState('');
     const [pages, setPages] = useState([]);
 
-    const [chapters, setChapters] = useState<any[]>([]);
+    const [chapters, setChapters] = useState<{title:string, id:string}[]>([]);
 
-    const apiChapterInfo = 'https://api.mangadex.org/chapter/' + idChapter
-
-    console.log('https://api.mangadex.org/at-home/server/' + idChapter)
     useEffect(() => {
             axios.get('https://api.mangadex.org/at-home/server/' + idChapter).then(res => {
                 console.log(res)
@@ -62,8 +59,8 @@ export default function () {
                     <Link className='mangaPageLink link' to={'/' + id}>Manga's page</Link>
                     <div className='chapterArea'>
                         {chapters.map((item) =>
-                            <Link className={['chapterLink', idChapter == item[1] ? 'active' : '','link'].join(' ')}
-                                  key={item[0]} to={'/' + id + '/' + item[1]}>{item[0]}</Link>
+                            <Link className={['chapterLink', idChapter == item.id ? 'active' : '','link'].join(' ')}
+                                  key={item.title} to={'/' + id + '/' + item.id}>{item.title}</Link>
                         )}
                     </div>
 

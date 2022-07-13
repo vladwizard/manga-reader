@@ -6,7 +6,7 @@
   align-items: center;
 
   > .content {
-    height: 707.75px;
+
     margin-top: 5vh;
     display: grid;
 
@@ -26,10 +26,10 @@
       align-items: center;
       margin: auto;
       height: 20vmin;
-      width: 10vmin;;
+      width: 10vmin;
       max-height: 200px;
       max-width: 100px;
-
+      border-radius: 0.8em;
     }
 
     .mangaArea {
@@ -39,8 +39,10 @@
       grid-auto-rows: 350px;
       grid-gap: 2vmin;
       padding: 0 5%;
-      max-width: 1280px;
-
+      //max-width: 1280px;
+      width: 1280px;
+      //min-height: calc(350px * 2);
+      height: 707.75px;
     }
 
     .pageNumber {
@@ -73,14 +75,15 @@
         margin: auto;
         height: 80px;
         width: 40px;
-
         * {
           width: 40px;
         }
       }
     }
     @media (orientation: portrait) {
-      grid-template: ". leftButton pages rightButton ." auto "mangaArea mangaArea mangaArea mangaArea mangaArea" auto;
+      grid-template:
+        ". leftButton pages rightButton ."
+        auto "mangaArea mangaArea mangaArea mangaArea mangaArea" auto;
       .paginationButton {
         margin: auto;
         height: 40px;

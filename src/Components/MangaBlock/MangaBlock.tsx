@@ -36,7 +36,7 @@ export default function ({mangaData}: { mangaData: any }) {
 
             {title && <div className='titleBlock'>
                 <h2 className="title"
-                    style={{'fontSize': (1.5 - 0.4 * Math.trunc(title.length / 40)) + 'em'}}>{title}</h2>
+                    style={{'fontSize': (1.4 - 0.3 * Math.trunc(title.length / 30)) + 'em'}}>{title}</h2>
             </div>
             }
             <div className='coverBlock'

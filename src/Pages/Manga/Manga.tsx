@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from "react";
-import {Link, useParams} from "react-router-dom";
+import {Link, useParams,useNavigate} from "react-router-dom";
 import axios from "axios";
 import './Manga.css';
-import {getChapters} from '../../orders'
-import {log} from "util";
+import {getChapters,getAllChapters,getChapterByLanguage} from '../../orders'
+import {isSetIterator} from "util/types";
 
 export default function () {
 
@@ -11,10 +11,13 @@ export default function () {
         return 'https://uploads.mangadex.org/covers/' + id + '/' + fileName
     }
 
+
+    const [chapters, setChapters] = useState<{ title: string, ids: string[] }[]>([]);
+
     useEffect(() => {
         axios.get('https://api.mangadex.org/manga/' + id).then(res => {
             setMangaData(res.data.data)
-            console.log(res.data)
+            // console.log(res.data)
             let cover_id: string = res.data.data.relationships.find((item: any) => item.type == 'cover_art').id;
 
             axios.get('https://api.mangadex.org/cover/' + cover_id,)
@@ -26,11 +29,8 @@ export default function () {
         })
 
         getChapters(id, setChapters)
+
     }, [])
-
-
-    const [chapters, setChapters] = useState<string[][]>([]);
-
 
 
     //Вставка пусткых клеток в chapterArea
@@ -75,28 +75,45 @@ export default function () {
 
     const description = mangaData?.attributes?.description.en;
 
+    const [language, setLanguage] = useState<any>('en');
+
+    const navigation = useNavigate()
+
     return (
 
         <div className='MangaPageWrapper'>
+            {/*<button onClick={() => setChapters([])}>123</button>*/}
             <div className='top'>
 
-                    <img src={coverImage} alt='coverArt'/>
-                    <p className='title'>{title}</p>
-                    <p className='description'>{description}</p>
+                <img src={coverImage} alt='coverArt'/>
+                <p className='title'>{title}</p>
+                <p className='description'>{description}</p>
 
             </div>
-            <div className='chapterArea'>
+            <div>
+                <div className="dropdown">
+                    <button className="dropbtn">{language}</button>
+                    <div className="dropdown-content">
+                        {['en', 'ru'].map((item) => {
+                                if(item != language)
+                                    return   <button key={item} onClick={() => setLanguage(item)}>{item}</button>
+                            }
+                        )
+                        }
+                    </div>
+                </div>
+                <div className='chapterArea'>
 
-                {chapters.map((item, index) => {
-                        if (item[0] == 'hidden')
+                    {chapters.map((item, index) => {
+                            // if (item[0] == 'hidden')
+                            //
+                            //     return <div className='chapterLink hidden'>1</div>
 
-                            return <div className='chapterLink hidden'>1</div>
-
-                        return <Link className='chapterLink' key={item[0]} to={item[1]}>{item[0]}</Link>
-                    }
-                )}
+                            return <button className='chapterLink' key={index} onClick={()=>getChapterByLanguage(item.ids,language).then(res => navigation(res as string))}>{item.title}</button>
+                        }
+                    )}
+                </div>
             </div>
-
         </div>
 
     )

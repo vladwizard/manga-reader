@@ -1,7 +1,8 @@
 $border-radius: 8px;
 .MangaPageWrapper {
   margin: 10vmin auto 0 auto;
-  width: 1280px;
+  width:100%;
+  max-width: 1280px;
   border-radius: $border-radius;
 *{
   margin: 0;
@@ -12,9 +13,10 @@ $border-radius: 8px;
     background: white;
     height: 400px;
     width: 100%;
+    overflow: auto;
 
     img {
-      border-radius: $border-radius;
+      border-radius: $border-radius 0 0 0;
       width: 300px;
       height: 100%;
       float: left;
@@ -42,7 +44,7 @@ $border-radius: 8px;
     border-radius: 0 0 $border-radius $border-radius;
     padding: 16px 16px;
     width: 100%;
-    min-height: 200px;
+    min-height: 316px;
     background: gainsboro;
 
     display: grid;
@@ -69,6 +71,8 @@ $border-radius: 8px;
       background: white;
       text-decoration: none;
       color: black;
+
+      border: none;
     }
 
     .chapterLink:hover {
@@ -117,5 +121,71 @@ $border-radius: 8px;
     }
 
   }
+  @media (orientation: landscape) and (max-width: 900px){
+    font-size: 0.7rem;
+    margin:0;
+    padding: 5px;
+
+    .top {
+      height: 250px;
+      img {
+        width: 200px;
+        height:100%;
+        float: left;
+        margin-right: 10px;
+      }
+    }
+  }
 
 }
+/* Кнопка выпадающего списка */
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  width: 60px;
+
+  padding: 8px 16px;
+  font-size: 20px;
+  border: none;
+}
+
+/* Контейнер <div> - необходим для размещения выпадающего содержимого */
+.dropdown {
+  transform: translate(-100%,0  );
+  height: 0;
+  position: relative;
+  display: inline-block;
+
+  float: left;
+
+}
+
+/* Выпадающее содержимое (скрыто по умолчанию) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  width: 100%;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+
+
+}
+
+/* Ссылки внутри выпадающего списка */
+.dropdown-content * {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+}
+
+/* Изменение цвета выпадающих ссылок при наведении курсора */
+.dropdown-content *:hover {background-color: #ddd;}
+
+/* Показать выпадающее меню при наведении курсора */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Изменение цвета фона кнопки раскрывающегося списка при отображении содержимого раскрывающегося списка */
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
