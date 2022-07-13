@@ -1,11 +1,11 @@
 .chapterPage {
-
+  background: #eeeeee;
   .pageArea {
     margin: auto;
 
     max-width: 920px;
     width: 100%;
-
+    height: max-content;
     display: flex;
     flex-direction: column;
 
@@ -30,7 +30,16 @@
       flex-direction: column;
       height: max-content;
       max-height: 80%;
+      .language{
+        color: white;
+        font-size: 1.4em;
+        background-color: #4CAF50;
+        width: min-content;
+        padding: 8px 16px;
+        line-height: 100%;
+        margin-left: auto;
 
+      }
       > * {
         border: solid black;
         border-width: 2px 0;
@@ -76,6 +85,7 @@
         .active {
           background: steelblue;
         }
+
       }
     }
   }

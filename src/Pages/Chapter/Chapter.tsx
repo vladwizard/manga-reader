@@ -1,10 +1,12 @@
 import React, {useEffect, useRef, useState} from "react";
-import {Link, useParams} from "react-router-dom";
+import {Link, useNavigate, useParams} from "react-router-dom";
 import axios from "axios";
 
 import './Chapter.css'
 
-import {getChapters} from "../../orders";
+import {getChapterByLanguage, getChapters} from "../../orders";
+import { useSelector} from 'react-redux'
+import {RootState} from "../../Redux/store";
 
 export default function () {
     const id: any = useParams().id;
@@ -13,7 +15,8 @@ export default function () {
     const [hash, setHash] = useState('');
     const [pages, setPages] = useState([]);
 
-    const [chapters, setChapters] = useState<{title:string, id:string}[]>([]);
+    const [chapters, setChapters] = useState<{title:string, ids:string[]}[]>([]);
+
 
     useEffect(() => {
             axios.get('https://api.mangadex.org/at-home/server/' + idChapter).then(res => {
@@ -40,7 +43,9 @@ export default function () {
     //         }
     //     }
     // }, [LinkAreaRef, LinkAreaRef.current])
+    const language = useSelector((state: RootState) => state.language.language)
 
+    const navigation = useNavigate()
     return (
         <div className='chapterPage'>
             <div className={['menu', menuToggle ? 'activeMenu' : ''].join(' ')}>
@@ -55,15 +60,16 @@ export default function () {
                 </button>
                 {menuToggle &&
                 <div className='extendedMenu'>
+
                     <Link className='mangaPageLink link' to={'/'}>Main</Link>
                     <Link className='mangaPageLink link' to={'/' + id}>Manga's page</Link>
                     <div className='chapterArea'>
-                        {chapters.map((item) =>
-                            <Link className={['chapterLink', idChapter == item.id ? 'active' : '','link'].join(' ')}
-                                  key={item.title} to={'/' + id + '/' + item.id}>{item.title}</Link>
+                        {chapters.map((item,index) =>
+
+                            <button className={['chapterLink', item.ids.indexOf(idChapter as string)!=-1 ? 'active' : '','link'].join(' ')} key={index} onClick={()=>getChapterByLanguage(item.ids,language).then(res => navigation('/'+id+'/'+res as string))}>{item.title}</button>
                         )}
                     </div>
-
+                    <p className='language'>{language}</p>
                 </div>
                 }
             </div>

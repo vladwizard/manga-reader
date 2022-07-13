@@ -3,7 +3,10 @@ import {Link, useParams,useNavigate} from "react-router-dom";
 import axios from "axios";
 import './Manga.css';
 import {getChapters,getAllChapters,getChapterByLanguage} from '../../orders'
-import {isSetIterator} from "util/types";
+
+import type { RootState } from '../../Redux/store'
+import { useSelector, useDispatch } from 'react-redux'
+import {changeLanguage} from '../../Redux/Slice/language'
 
 export default function () {
 
@@ -75,8 +78,8 @@ export default function () {
 
     const description = mangaData?.attributes?.description.en;
 
-    const [language, setLanguage] = useState<any>('en');
-
+    const language = useSelector((state: RootState) => state.language.language)
+    const dispatch = useDispatch()
     const navigation = useNavigate()
 
     return (
@@ -85,7 +88,9 @@ export default function () {
             {/*<button onClick={() => setChapters([])}>123</button>*/}
             <div className='top'>
 
-                <img src={coverImage} alt='coverArt'/>
+                <img src={coverImage}
+                     // onError="this.style.visibility='hidden'"
+                     alt=""/>
                 <p className='title'>{title}</p>
                 <p className='description'>{description}</p>
 
@@ -96,7 +101,7 @@ export default function () {
                     <div className="dropdown-content">
                         {['en', 'ru'].map((item) => {
                                 if(item != language)
-                                    return   <button key={item} onClick={() => setLanguage(item)}>{item}</button>
+                                    return   <button key={item} onClick={() => dispatch(changeLanguage(item))}>{item}</button>
                             }
                         )
                         }
