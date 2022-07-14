@@ -1,7 +1,8 @@
 .wrapper {
   background: #eeeeee;
   font-family: Tahoma, sans-serif;
-  height: 100vh;
+  height: max-content;
+  min-height: 100vh;
   width: 100vw;
 }
 

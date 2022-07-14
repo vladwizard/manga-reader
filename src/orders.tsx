@@ -1,4 +1,5 @@
 import axios from "axios";
+import {strict} from "assert";
 
 
 export function getAllChapters(id: string, setChapters: any) {
@@ -75,9 +76,8 @@ export function getChapters(id: string, setChapters: any) {
 }
 
 export function getChapterByLanguage(ids: string[], language: string) {
-    // let index = 0;
     return new Promise(resolve => {
-            let en:string;
+            let en: string;
             ids.forEach((item, index) => {
                     setTimeout(() => {
                         axios.get('https://api.mangadex.org/chapter/' + item).then(res => {
@@ -89,13 +89,45 @@ export function getChapterByLanguage(ids: string[], language: string) {
                                 resolve(item);
                             if (language == 'en' && pages > 0)
                                 en = item as string;
-                            if (index == ids.length ) {
+                            if (index == ids.length) {
                                 if (en != undefined) resolve(en);
                                 else (resolve(ids[0]))
                             }
                         })
 
                     }, index++ * 100)
+
+                }
+            )
+        }
+    )
+}
+
+export function getLanguagesOfChapters(ids: string[]) {
+    return new Promise(resolve => {
+            let r: { language: string, id: string }[] = [];
+            let index = 0;
+            ids.forEach((item) => {
+
+                    // setTimeout(() => {
+                    axios.get('https://api.mangadex.org/chapter/' + item).then(res => {
+
+                        let languageRes: string = res.data.data.attributes.translatedLanguage
+                        let pages: number = res.data.data.attributes.pages
+
+                        if (pages > 0) {
+                            r.push({
+                                language: languageRes,
+                                id: item
+                            })
+                        }
+                        index++;
+                        // console.log(index,ids.length)
+                        if (index == ids.length) resolve(r.slice())
+
+                    })
+
+                    // }, index++ * 100)
 
                 }
             )

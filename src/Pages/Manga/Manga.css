@@ -33,33 +33,67 @@
   width: 100%;
   height: 100%;
   font-size: 1.3em;
+  padding: 10px;
 }
 .MangaPageWrapper .chapterArea {
   border-radius: 0 0 8px 8px;
   padding: 16px 16px;
   width: 100%;
   min-height: 316px;
-  background: gainsboro;
+  background: #e9e9e9;
   display: grid;
-  grid-auto-flow: column;
-  grid-template-rows: repeat(10, minmax(max-content, 1fr));
-  grid-auto-columns: max-content;
+  grid-auto-flow: row;
+  grid-template-columns: repeat(6, minmax(max-content, 1fr));
+  grid-template-rows: max-content;
   grid-gap: 0 16px;
-  overflow: auto;
   box-sizing: border-box;
+  /* Контейнер <div> - необходим для размещения выпадающего содержимого */
+  /* Выпадающее содержимое (скрыто по умолчанию) */
+  /* Ссылки внутри выпадающего списка */
+  /* Изменение цвета выпадающих ссылок при наведении курсора */
+  /* Показать выпаdдающее меню при наведении курсора */
+  /* Изменение цвета фона кнопки раскрывающегося списка при отображении содержимого раскрывающегося списка */
 }
-.MangaPageWrapper .chapterArea .chapterLink {
-  box-sizing: border-box;
-  line-height: 100%;
-  white-space: nowrap;
-  font-size: 1.4em;
-  padding: 3px 9px;
-  background: white;
-  text-decoration: none;
+.MangaPageWrapper .chapterArea .chapterButton {
+  background-color: white;
   color: black;
+  padding: 4px 16px;
   border: none;
+  outline: 2px white solid;
 }
-.MangaPageWrapper .chapterArea .chapterLink:hover {
+.MangaPageWrapper .chapterArea .chapterContainer {
+  position: relative;
+  display: inline-block;
+  font-size: 1.4em;
+  width: max-content;
+}
+.MangaPageWrapper .chapterArea .dropdown-content {
+  position: absolute;
+  font-size: 0.85em;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  background-color: white;
+  width: 100%;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+.MangaPageWrapper .chapterArea .dropdown-content * {
+  font-size: 1em;
+  color: black;
+  padding: 4px 16px;
+  text-decoration: none;
+  display: block;
+}
+.MangaPageWrapper .chapterArea .dropdown-content *:hover {
+  background-color: #ddd;
+}
+.MangaPageWrapper .chapterArea .chapterContainer:hover .dropdown-content {
+  display: grid;
+}
+.MangaPageWrapper .chapterArea .chapterContainer:hover .chapterButton {
+  background-color: #ddd;
+}
+.MangaPageWrapper .chapterLink:hover {
   opacity: 0.7;
 }
 @media (orientation: portrait) {
@@ -110,59 +144,6 @@
     float: left;
     margin-right: 10px;
   }
-}
-
-/* Кнопка выпадающего списка */
-.dropbtn {
-  background-color: #4CAF50;
-  color: white;
-  width: 60px;
-  padding: 8px 16px;
-  font-size: 20px;
-  border: none;
-}
-
-/* Контейнер <div> - необходим для размещения выпадающего содержимого */
-.dropdown {
-  transform: translate(-100%, 0);
-  height: 0;
-  position: relative;
-  display: inline-block;
-  float: left;
-}
-
-/* Выпадающее содержимое (скрыто по умолчанию) */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f1f1f1;
-  width: 100%;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-}
-
-/* Ссылки внутри выпадающего списка */
-.dropdown-content * {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  width: 100%;
-}
-
-/* Изменение цвета выпадающих ссылок при наведении курсора */
-.dropdown-content *:hover {
-  background-color: #ddd;
-}
-
-/* Показать выпадающее меню при наведении курсора */
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-/* Изменение цвета фона кнопки раскрывающегося списка при отображении содержимого раскрывающегося списка */
-.dropdown:hover .dropbtn {
-  background-color: #3e8e41;
 }
 
 /*# sourceMappingURL=Manga.css.map */

@@ -1,12 +1,14 @@
 import React, {useEffect, useState} from "react";
-import {Link, useParams,useNavigate} from "react-router-dom";
+import {Link, useParams, useNavigate} from "react-router-dom";
 import axios from "axios";
 import './Manga.css';
-import {getChapters,getAllChapters,getChapterByLanguage} from '../../orders'
+import {getChapters, getLanguagesOfChapters, getChapterByLanguage} from '../../orders'
 
-import type { RootState } from '../../Redux/store'
-import { useSelector, useDispatch } from 'react-redux'
+import type {RootState} from '../../Redux/store'
+import {useSelector, useDispatch} from 'react-redux'
 import {changeLanguage} from '../../Redux/Slice/language'
+import {log} from "util";
+
 
 export default function () {
 
@@ -29,12 +31,15 @@ export default function () {
                         setCoverImage(coverImageApi(id, cover))
                     }
                 )
+            getChapters(id, setChapters)
         })
 
-        getChapters(id, setChapters)
 
     }, [])
-
+    // useEffect(() => {
+    //     if (chapters.length > 0)
+    //         getLanguagesOfChapters(chapters[0].ids).then(res => setPossibleLanguages(res as string[]))
+    // }, [chapters])
 
     //Вставка пусткых клеток в chapterArea
     // useEffect(() => {
@@ -78,10 +83,12 @@ export default function () {
 
     const description = mangaData?.attributes?.description.en;
 
+    const [possibleLanguages, setPossibleLanguages] = useState<{ language: string, id: string }[]>([]);
     const language = useSelector((state: RootState) => state.language.language)
     const dispatch = useDispatch()
     const navigation = useNavigate()
 
+    const [active, setActive] = useState(-1);
     return (
 
         <div className='MangaPageWrapper'>
@@ -89,32 +96,46 @@ export default function () {
             <div className='top'>
 
                 <img src={coverImage}
-                     // onError="this.style.visibility='hidden'"
+                    // onError="this.style.visibility='hidden'"
                      alt=""/>
                 <p className='title'>{title}</p>
                 <p className='description'>{description}</p>
 
             </div>
             <div>
-                <div className="dropdown">
-                    <button className="dropbtn">{language}</button>
-                    <div className="dropdown-content">
-                        {['en', 'ru'].map((item) => {
-                                if(item != language)
-                                    return   <button key={item} onClick={() => dispatch(changeLanguage(item))}>{item}</button>
-                            }
-                        )
-                        }
-                    </div>
-                </div>
+
                 <div className='chapterArea'>
 
                     {chapters.map((item, index) => {
-                            // if (item[0] == 'hidden')
-                            //
-                            //     return <div className='chapterLink hidden'>1</div>
 
-                            return <button className='chapterLink' key={index} onClick={()=>getChapterByLanguage(item.ids,language).then(res => navigation(res as string))}>{item.title}</button>
+
+                            // return <button className='chapterLink' key={index}
+                            //                onClick={() => getChapterByLanguage(item.ids, language).then(res => navigation(res as string))}>{item.title}</button>
+
+                            return <div className='chapterContainer'>
+                                <button className='chapterButton' key={index}
+                                        onClick={() => {
+                                            getLanguagesOfChapters(item.ids).then(
+                                                res => {
+                                                    setPossibleLanguages(res as { language: string, id: string }[])
+
+                                                    setActive(index)
+
+                                                })
+                                        }}>{item.title}</button>
+                                {active == index &&
+                                <div className="dropdown-content">
+                                    {possibleLanguages.map((item,index) => {
+                                                return <Link key={index}
+                                                               to={item.id}>{item.language}</Link>
+                                        }
+                                    )
+                                    }
+                                </div>
+                                }
+                            </div>
+
+
                         }
                     )}
                 </div>
