@@ -1,6 +1,8 @@
 # Manga reader
 Application for reading manga, connected to the backend mangadex.org, implemented selection, search, chapter selection. Used React Router, axios, lodash.denounce, redux toolkit.
 File's formates: scss and ts/tsx.
+
+Run only due to because CORS policy of backend
 ## Main page
 ![Screenshot 2022-07-15 12 11 43](https://user-images.githubusercontent.com/72702845/179192923-16bf3c91-e2ff-4358-b7b8-4ebf04cc731a.png)
 ## Find function
