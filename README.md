@@ -7,7 +7,7 @@ File's formates: scss and ts/tsx.
 ![Screenshot 2022-07-15 12 12 48](https://user-images.githubusercontent.com/72702845/179193099-59f70cdd-2964-4032-a7b4-672ac579c356.png)
 ## Manga page
 ![Screenshot 2022-07-15 12 20 39](https://user-images.githubusercontent.com/72702845/179194398-de6ac677-102b-4d13-bc29-3257e574212d.png)
-## Changing defoult language functions while double clincking on chapter
+## Changing defoult language using while double clincking on chapter
 ![image](https://user-images.githubusercontent.com/72702845/179194590-e3ed1f4d-4a8a-40af-ac95-58cff8dcdf1e.png)
 ## Choosing translate when click on chapter
 ![image](https://user-images.githubusercontent.com/72702845/179194654-a7526552-f651-4df5-abd0-af47fcc0ee9e.png)
