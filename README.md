@@ -2,25 +2,24 @@
 Application for reading manga, connected to the backend mangadex.org, implemented selection, search, chapter selection. Used React Router, axios, lodash.denounce, redux toolkit.
 File's formates: scss and ts/tsx.
 ## Main page
-![Screenshot 2022-07-09 00 47 17](https://user-images.githubusercontent.com/72702845/178074585-662b66cf-98e5-4645-8158-ac246e110a70.png)
-## Find funсеion
-![Screenshot 2022-07-09 00 48 30](https://user-images.githubusercontent.com/72702845/178074798-7cfc1ef8-56ec-49f2-9059-aa7863f99b40.png)
+![Screenshot 2022-07-15 12 11 43](https://user-images.githubusercontent.com/72702845/179192923-16bf3c91-e2ff-4358-b7b8-4ebf04cc731a.png)
+## Find function
+![Screenshot 2022-07-15 12 12 48](https://user-images.githubusercontent.com/72702845/179193099-59f70cdd-2964-4032-a7b4-672ac579c356.png)
 ## Manga page
-![Screenshot 2022-07-09 05 07 44](https://user-images.githubusercontent.com/72702845/178087672-93077914-1f4d-4154-a258-b070268b86c8.png)
+![Screenshot 2022-07-15 12 20 39](https://user-images.githubusercontent.com/72702845/179194398-de6ac677-102b-4d13-bc29-3257e574212d.png)
+## Changing defoult language functions while double clincking on chapter
+![image](https://user-images.githubusercontent.com/72702845/179194590-e3ed1f4d-4a8a-40af-ac95-58cff8dcdf1e.png)
+## Choosing translate when click on chapter
+![image](https://user-images.githubusercontent.com/72702845/179194654-a7526552-f651-4df5-abd0-af47fcc0ee9e.png)
 ## Reading page
-![Screenshot 2022-07-09 05 08 41](https://user-images.githubusercontent.com/72702845/178087686-208bd07c-037b-4b77-a20e-14d3c29976c9.png)
-
-![Screenshot 2022-07-09 05 09 20](https://user-images.githubusercontent.com/72702845/178087711-8a205910-9397-46a0-b241-4e104f0c8862.png)
-##Adapting layout Iphone 12 pro sceens
-
-![Screenshot 2022-07-09 18 54 40](https://user-images.githubusercontent.com/72702845/178113204-80a3b2e6-91be-49df-b5c4-d7878b29a5e5.png)
-
-![Screenshot 2022-07-09 18 54 50](https://user-images.githubusercontent.com/72702845/178113205-0c9da38e-18d7-4631-8af1-6491e6c6e112.png)
-
-![Screenshot 2022-07-09 18 55 26](https://user-images.githubusercontent.com/72702845/178113206-79cbff2e-c97d-4edd-9fb7-d27fbce1063a.png)
-
-![Screenshot 2022-07-09 19 02 55](https://user-images.githubusercontent.com/72702845/178113500-8e93eabe-ac21-4735-b974-72921d985a41.png)
-
-![Screenshot 2022-07-09 19 03 17](https://user-images.githubusercontent.com/72702845/178113502-7c23f338-0c94-4562-8009-e5625581671f.png)
-
-![Screenshot 2022-07-09 19 03 27](https://user-images.githubusercontent.com/72702845/178113504-0c2c0805-f005-4313-8ef3-2a9a456ae6b7.png)
+![Screenshot 2022-07-15 12 29 11](https://user-images.githubusercontent.com/72702845/179195863-a7bf151c-d31d-4685-80aa-b77ca13d5a0d.png)
+## Reading page menu
+![Screenshot 2022-07-15 12 32 18](https://user-images.githubusercontent.com/72702845/179196409-73725695-e9b4-4134-a3e4-183b7961ebb9.png)
+#Adapting layout Iphone 12 pro sceens
+## Main page
+![Screenshot 2022-07-15 12 37 13](https://user-images.githubusercontent.com/72702845/179197275-4e7d54d9-4931-4cf2-a34e-96bf2cb77e19.png)
+## Manga page
+![Screenshot 2022-07-15 12 41 30](https://user-images.githubusercontent.com/72702845/179198063-90a4d0a9-382e-4807-83e3-805dffd896b8.png)
+## Reading page
+![Screenshot 2022-07-15 12 42 16](https://user-images.githubusercontent.com/72702845/179198174-ff1e4329-7c96-4ea2-8a18-e748e569ecc4.png)
+![Screenshot 2022-07-15 12 42 34](https://user-images.githubusercontent.com/72702845/179198246-c71e70cb-6408-4756-b1ed-fb890abc56ae.png)
