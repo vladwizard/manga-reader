@@ -1,5 +1,6 @@
 .chapterPage {
   background: #eeeeee;
+
   .pageArea {
     margin: auto;
 
@@ -30,26 +31,26 @@
       flex-direction: column;
       height: max-content;
       max-height: 80%;
-      .language{
-        color: white;
-        font-size: 1.4em;
-        background-color: #4CAF50;
-        width: min-content;
-        padding: 8px 16px;
-        line-height: 100%;
-        margin-left: auto;
 
+      .changingLanguageBlockContainer {
+        height: 0;
       }
+
+      .changingLanguageBlock {
+        transform: translate(0, -100%);
+        float: right;
+      }
+
       > * {
-        border: solid black;
-        border-width: 2px 0;
+
         box-sizing: border-box;
-        margin: -2px 0 0 0;
+
 
       }
 
       .mangaPageLink {
-
+        border: black solid;
+        border-width: 2px 0 2px 0;
         text-decoration: none;
         color: black;
         font-size: 2em;
@@ -62,31 +63,14 @@
       }
 
       .chapterArea {
-
-        flex: 1;
-        margin-bottom: 2px;
-        display: flex;
-        flex-direction: column;
-        overflow: auto;
-
-        .chapterLink {
-          font-size: 1.5em;
-          text-decoration: none;
-          color: black;
-          background: white;
-          padding: 0 9px;
+        grid-template-columns: 1fr;
+        padding: 0;
+        >.chapterContainer{
+          width: auto;
         }
-
-        .chapterLink:hover {
-          background: #ddd;
-        }
-
-
-        .active {
-          background: steelblue;
-        }
-
       }
+
+
     }
   }
 

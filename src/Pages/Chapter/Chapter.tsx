@@ -4,9 +4,14 @@ import axios from "axios";
 
 import './Chapter.css'
 
+
+
 import {getChapterByLanguage, getChapters} from "../../orders";
-import { useSelector} from 'react-redux'
+import {useSelector} from 'react-redux'
 import {RootState} from "../../Redux/store";
+import ChangingLanguageBlock from "../../Components/ChangingLanguageBlock/ChangingLanguageBlock";
+
+import ChapterArea from "../../Components/ChapterArea/ChapterArea";
 
 export default function () {
     const id: any = useParams().id;
@@ -15,7 +20,7 @@ export default function () {
     const [hash, setHash] = useState('');
     const [pages, setPages] = useState([]);
 
-    const [chapters, setChapters] = useState<{title:string, ids:string[]}[]>([]);
+    const [chapters, setChapters] = useState<{ title: string, ids: string[] }[]>([]);
 
 
     useEffect(() => {
@@ -34,16 +39,7 @@ export default function () {
 
     const [menuToggle, setMenuToggle] = useState(false);
 
-    // const LinkAreaRef = useRef(null);
-    // useEffect(() => {
-    //     console.log(15523, LinkAreaRef)
-    //     if (LinkAreaRef != null) {
-    //         if (LinkAreaRef.current != null) {
-    //             document.getElementsByClassName('chapterArea')[0].scrollTo(0,1200)
-    //         }
-    //     }
-    // }, [LinkAreaRef, LinkAreaRef.current])
-    const language = useSelector((state: RootState) => state.language.language)
+    const language = useSelector((state: RootState) => state.language.defaultLanguage)
 
     const navigation = useNavigate()
     return (
@@ -60,16 +56,14 @@ export default function () {
                 </button>
                 {menuToggle &&
                 <div className='extendedMenu'>
+                    <div className='changingLanguageBlockContainer'>
+                        <ChangingLanguageBlock/>
+                    </div>
 
                     <Link className='mangaPageLink link' to={'/'}>Main</Link>
                     <Link className='mangaPageLink link' to={'/' + id}>Manga's page</Link>
-                    <div className='chapterArea'>
-                        {chapters.map((item,index) =>
+                   <ChapterArea idManga={id}/>
 
-                            <button className={['chapterLink', item.ids.indexOf(idChapter as string)!=-1 ? 'active' : '','link'].join(' ')} key={index} onClick={()=>getChapterByLanguage(item.ids,language).then(res => navigation('/'+id+'/'+res as string))}>{item.title}</button>
-                        )}
-                    </div>
-                    <p className='language'>{language}</p>
                 </div>
                 }
             </div>

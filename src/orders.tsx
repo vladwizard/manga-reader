@@ -1,5 +1,4 @@
 import axios from "axios";
-import {strict} from "assert";
 
 
 export function getAllChapters(id: string, setChapters: any) {
@@ -16,10 +15,9 @@ export function getAllChapters(id: string, setChapters: any) {
                     if (volume.volume == 'none' && chapter.chapter == 'none') title = 'One-shot'
                     else if (volume.volume == 'none' && chapter.chapter != 'none') title = 'Chapter ' + chapter.chapter
                     else if (volume.volume != 'none' && chapter.chapter == 'none') title = 'V' + volume.volume + ' ' + 'Chapter ' + '?'
-                    else title = 'V' + volume.volume + ' ' + 'Chapter ' + chapter.chapter
+                    else title = 'V' + volume.volume + ' ' + 'Chapter ' + chapter.chapter;
 
-                    const apiChapterInfo = 'https://api.mangadex.org/chapter/' + chapter.id;
-                    // setTimeout(() => {
+
                     [chapter.id, ...chapter.others].forEach((item) => {
                             setTimeout(() => {
                                 axios.get('https://api.mangadex.org/chapter/' + item).then(res => {
@@ -77,7 +75,7 @@ export function getChapters(id: string, setChapters: any) {
 
 export function getChapterByLanguage(ids: string[], language: string) {
     return new Promise(resolve => {
-            let en: string;
+            let indexCompleted = 0;
             ids.forEach((item, index) => {
                     setTimeout(() => {
                         axios.get('https://api.mangadex.org/chapter/' + item).then(res => {
@@ -87,15 +85,13 @@ export function getChapterByLanguage(ids: string[], language: string) {
 
                             if (language == languageRes && pages > 0)
                                 resolve(item);
-                            if (language == 'en' && pages > 0)
-                                en = item as string;
+                            indexCompleted++;
                             if (index == ids.length) {
-                                if (en != undefined) resolve(en);
-                                else (resolve(ids[0]))
+                                resolve(null);
                             }
                         })
 
-                    }, index++ * 100)
+                    }, index++ * 20)
 
                 }
             )
@@ -106,28 +102,28 @@ export function getChapterByLanguage(ids: string[], language: string) {
 export function getLanguagesOfChapters(ids: string[]) {
     return new Promise(resolve => {
             let r: { language: string, id: string }[] = [];
-            let index = 0;
-            ids.forEach((item) => {
+            let indexCompleted = 0;
+            ids.forEach((item, index) => {
 
-                    // setTimeout(() => {
-                    axios.get('https://api.mangadex.org/chapter/' + item).then(res => {
+                    setTimeout(() => {
+                        axios.get('https://api.mangadex.org/chapter/' + item).then(res => {
 
-                        let languageRes: string = res.data.data.attributes.translatedLanguage
-                        let pages: number = res.data.data.attributes.pages
+                            let languageRes: string = res.data.data.attributes.translatedLanguage
+                            let pages: number = res.data.data.attributes.pages
 
-                        if (pages > 0) {
-                            r.push({
-                                language: languageRes,
-                                id: item
-                            })
-                        }
-                        index++;
-                        // console.log(index,ids.length)
-                        if (index == ids.length) resolve(r.slice())
+                            if (pages > 0) {
+                                r.push({
+                                    language: languageRes,
+                                    id: item
+                                })
+                            }
+                            indexCompleted++;
+                            // console.log(index,ids.length)
+                            if (indexCompleted == ids.length) resolve(r.slice())
 
-                    })
+                        })
 
-                    // }, index++ * 100)
+                    }, index++ * 20)
 
                 }
             )

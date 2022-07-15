@@ -26,22 +26,19 @@
   height: max-content;
   max-height: 80%;
 }
-.chapterPage > .menu .extendedMenu .language {
-  color: white;
-  font-size: 1.4em;
-  background-color: #4CAF50;
-  width: min-content;
-  padding: 8px 16px;
-  line-height: 100%;
-  margin-left: auto;
+.chapterPage > .menu .extendedMenu .changingLanguageBlockContainer {
+  height: 0;
+}
+.chapterPage > .menu .extendedMenu .changingLanguageBlock {
+  transform: translate(0, -100%);
+  float: right;
 }
 .chapterPage > .menu .extendedMenu > * {
-  border: solid black;
-  border-width: 2px 0;
   box-sizing: border-box;
-  margin: -2px 0 0 0;
 }
 .chapterPage > .menu .extendedMenu .mangaPageLink {
+  border: black solid;
+  border-width: 2px 0 2px 0;
   text-decoration: none;
   color: black;
   font-size: 2em;
@@ -52,24 +49,11 @@
   background: #ddd;
 }
 .chapterPage > .menu .extendedMenu .chapterArea {
-  flex: 1;
-  margin-bottom: 2px;
-  display: flex;
-  flex-direction: column;
-  overflow: auto;
+  grid-template-columns: 1fr;
+  padding: 0;
 }
-.chapterPage > .menu .extendedMenu .chapterArea .chapterLink {
-  font-size: 1.5em;
-  text-decoration: none;
-  color: black;
-  background: white;
-  padding: 0 9px;
-}
-.chapterPage > .menu .extendedMenu .chapterArea .chapterLink:hover {
-  background: #ddd;
-}
-.chapterPage > .menu .extendedMenu .chapterArea .active {
-  background: steelblue;
+.chapterPage > .menu .extendedMenu .chapterArea > .chapterContainer {
+  width: auto;
 }
 .chapterPage .activeMenu {
   height: 100vh;

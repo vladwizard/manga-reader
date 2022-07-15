@@ -1,14 +1,10 @@
 import React, {useEffect, useState} from "react";
-import {Link, useParams, useNavigate} from "react-router-dom";
+import {useParams, useNavigate} from "react-router-dom";
 import axios from "axios";
 import './Manga.css';
-import {getChapters, getLanguagesOfChapters, getChapterByLanguage} from '../../orders'
 
-import type {RootState} from '../../Redux/store'
-import {useSelector, useDispatch} from 'react-redux'
-import {changeLanguage} from '../../Redux/Slice/language'
-import {log} from "util";
-
+import ChangingLanguageBlock from '../../Components/ChangingLanguageBlock/ChangingLanguageBlock'
+import ChapterArea from "../../Components/ChapterArea/ChapterArea";
 
 export default function () {
 
@@ -16,8 +12,6 @@ export default function () {
         return 'https://uploads.mangadex.org/covers/' + id + '/' + fileName
     }
 
-
-    const [chapters, setChapters] = useState<{ title: string, ids: string[] }[]>([]);
 
     useEffect(() => {
         axios.get('https://api.mangadex.org/manga/' + id).then(res => {
@@ -31,15 +25,11 @@ export default function () {
                         setCoverImage(coverImageApi(id, cover))
                     }
                 )
-            getChapters(id, setChapters)
+
         })
 
 
     }, [])
-    // useEffect(() => {
-    //     if (chapters.length > 0)
-    //         getLanguagesOfChapters(chapters[0].ids).then(res => setPossibleLanguages(res as string[]))
-    // }, [chapters])
 
     //Вставка пусткых клеток в chapterArea
     // useEffect(() => {
@@ -83,62 +73,20 @@ export default function () {
 
     const description = mangaData?.attributes?.description.en;
 
-    const [possibleLanguages, setPossibleLanguages] = useState<{ language: string, id: string }[]>([]);
-    const language = useSelector((state: RootState) => state.language.language)
-    const dispatch = useDispatch()
-    const navigation = useNavigate()
-
-    const [active, setActive] = useState(-1);
     return (
 
         <div className='MangaPageWrapper'>
-            {/*<button onClick={() => setChapters([])}>123</button>*/}
             <div className='top'>
-
                 <img src={coverImage}
-                    // onError="this.style.visibility='hidden'"
                      alt=""/>
                 <p className='title'>{title}</p>
                 <p className='description'>{description}</p>
 
             </div>
             <div>
+                <ChangingLanguageBlock />
+                <ChapterArea idManga={id}/>
 
-                <div className='chapterArea'>
-
-                    {chapters.map((item, index) => {
-
-
-                            // return <button className='chapterLink' key={index}
-                            //                onClick={() => getChapterByLanguage(item.ids, language).then(res => navigation(res as string))}>{item.title}</button>
-
-                            return <div className='chapterContainer'>
-                                <button className='chapterButton' key={index}
-                                        onClick={() => {
-                                            getLanguagesOfChapters(item.ids).then(
-                                                res => {
-                                                    setPossibleLanguages(res as { language: string, id: string }[])
-
-                                                    setActive(index)
-
-                                                })
-                                        }}>{item.title}</button>
-                                {active == index &&
-                                <div className="dropdown-content">
-                                    {possibleLanguages.map((item,index) => {
-                                                return <Link key={index}
-                                                               to={item.id}>{item.language}</Link>
-                                        }
-                                    )
-                                    }
-                                </div>
-                                }
-                            </div>
-
-
-                        }
-                    )}
-                </div>
             </div>
         </div>
 

@@ -1,0 +1,50 @@
+/* Кнопка выпадающего списка */
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    width: 70px;
+
+    padding: 8px 0;
+
+    border: none;
+}
+
+/* Контейнер <div> - необходим для размещения выпадающего содержимого */
+.changingLanguageBlock {
+    font-size: 1.3em;
+    position: relative;
+    display: inline-block;
+z-index: 1000;
+    float: left;
+
+}
+
+/* Выпадающее содержимое (скрыто по умолчанию) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    width: 100%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+
+}
+
+/* Ссылки внутри выпадающего списка */
+.dropdown-content * {
+    color: black;
+    padding: 5px 0;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    border: none;
+}
+
+/* Изменение цвета выпадающих ссылок при наведении курсора */
+.dropdown-content *:hover {background-color: #ddd;}
+
+/* Показать выпадающее меню при наведении курсора */
+.changingLanguageBlock:hover .dropdown-content {display: block;}
+
+/* Изменение цвета фона кнопки раскрывающегося списка при отображении содержимого раскрывающегося списка */
+.changingLanguageBlock:hover .dropbtn {background-color: #3e8e41;}
