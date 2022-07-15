@@ -12,7 +12,6 @@ export default function () {
         return 'https://uploads.mangadex.org/covers/' + id + '/' + fileName
     }
 
-
     useEffect(() => {
         axios.get('https://api.mangadex.org/manga/' + id).then(res => {
             setMangaData(res.data.data)
@@ -25,9 +24,7 @@ export default function () {
                         setCoverImage(coverImageApi(id, cover))
                     }
                 )
-
         })
-
 
     }, [])
 
@@ -64,7 +61,7 @@ export default function () {
     //     [chapters]
     // )
 
-    const id: any = useParams().id;
+    const id = useParams().idManga as string;
     const [mangaData, setMangaData] = useState<any>();
 
     const [coverImage, setCoverImage] = useState<string>('');
@@ -77,14 +74,14 @@ export default function () {
 
         <div className='MangaPageWrapper'>
             <div className='top'>
-                <img src={coverImage}
-                     alt=""/>
+                <div className='cover' style={{backgroundImage: 'url('+coverImage+')'}}
+                     />
                 <p className='title'>{title}</p>
                 <p className='description'>{description}</p>
 
             </div>
             <div>
-                <ChangingLanguageBlock />
+                <ChangingLanguageBlock/>
                 <ChapterArea idManga={id}/>
 
             </div>

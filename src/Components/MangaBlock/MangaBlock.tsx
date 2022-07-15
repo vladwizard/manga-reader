@@ -5,14 +5,14 @@ import {Link} from "react-router-dom";
 
 export default function ({mangaData}: { mangaData: any }) {
     // console.log(id)
-    const id = mangaData.id;
+    const idManga = mangaData.id;
     const title = Object.values(mangaData.attributes.title)[0] as string;
     // console.log(Object.values(mangaData.attributes.title)[0])
     const description = mangaData.attributes.description.en
     const cover_id: string = mangaData.relationships.find((item: any) => item.type == 'cover_art').id;
 
     const coverImageApi = (id: string, fileName: string) => {
-        return 'https://uploads.mangadex.org/covers/' + id + '/' + fileName+'.256.jpg'
+        return 'https://uploads.mangadex.org/covers/' + id + '/' + fileName + '.256.jpg'
     }
 
     const [coverImage, setCoverImage] = useState<any>();
@@ -23,7 +23,7 @@ export default function ({mangaData}: { mangaData: any }) {
             .then(res => {
                     let cover = res.data.data.attributes.fileName;
 
-                    setCoverImage(coverImageApi(id, cover))
+                    setCoverImage(coverImageApi(idManga, cover))
                 }
             )
 
@@ -32,7 +32,7 @@ export default function ({mangaData}: { mangaData: any }) {
     // console.log(coverImage)
     // console.log(description)
     return (
-        <Link to={id} className='mangaBlock' title={description}>
+        <Link to={idManga} className='mangaBlock' title={description}>
 
             {title && <div className='titleBlock'>
                 <h2 className="title"

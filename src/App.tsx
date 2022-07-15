@@ -18,21 +18,21 @@ function App() {
     const [find, setFind] = useState('');
     return (
         <BrowserRouter>
-            <div className="wrapper" >
+            <div className="wrapper">
                 <Routes>
                     <Route path='/*' element={
                         <div>
                             <Header setFind={setFind}/>
                             <Routes>
                                 <Route path='/' element={
-                                        <MainPage findLine={find}/>
+                                    <MainPage findLine={find}/>
                                 }/>
-                                <Route path='/:id' element={
-                                        <MangaPage/>}/>
+                                <Route path='/:idManga' element={
+                                    <MangaPage/>}/>
                             </Routes>
                         </div>
                     }/>
-                    <Route path='/:id/:idChapter' element={<Chapter/>}/>
+                    <Route path='/:idManga/:idChapter' element={<Chapter/>}/>
                 </Routes>
             </div>
         </BrowserRouter>

@@ -2,25 +2,29 @@ $border-radius: 16px;
 .MangaPageWrapper {
   margin: 10vmin auto 0 auto;
   padding-bottom: 50vh;
-  width:100%;
+  width: 100%;
   max-width: 1280px;
   border-radius: $border-radius;
-*{
-  margin: 0;
-}
+
+  * {
+    margin: 0;
+  }
+
   .top {
     border-radius: $border-radius $border-radius 0 0;
     display: block;
     background: white;
     height: 400px;
     width: 100%;
-    overflow: auto;;
-    img {
+    overflow: auto;
+
+    .cover {
       border-radius: $border-radius 0 0 0;
       width: 300px;
       height: 100%;
       float: left;
       margin-right: 10px;
+      background-size: cover;
     }
 
     .title {
@@ -28,22 +32,27 @@ $border-radius: 16px;
     }
 
     .description {
-      box-sizing: content-box;
+
       white-space: pre-wrap;
       text-wrap: avoid;
+      word-break: break-word;
+
       width: 100%;
       height: 100%;
       font-size: 1.3em;
       padding: 10px;
+      box-sizing: border-box;
     }
 
 
   }
-  .changingLanguageBlock{
-    transform: translate(-100%,0 );
+
+  .changingLanguageBlock {
+    transform: translate(-100%, 0);
     height: 0;
   }
-  .chapterArea{
+
+  .chapterArea {
     border-radius: 0 0 $border-radius $border-radius;
   }
 
@@ -82,22 +91,24 @@ $border-radius: 16px;
       grid-gap: 0 8px;
       overflow: auto;
       box-sizing: border-box;
+
       .chapterLink {
 
       }
     }
 
   }
-  @media (orientation: landscape) and (max-width: 900px){
+  @media (orientation: landscape) and (max-width: 900px) {
     font-size: 0.7rem;
-    margin:0;
+    margin: 0;
     padding: 5px;
 
     .top {
       height: 250px;
+
       img {
         width: 200px;
-        height:100%;
+        height: 100%;
         float: left;
         margin-right: 10px;
       }

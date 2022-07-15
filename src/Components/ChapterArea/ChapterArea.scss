@@ -10,7 +10,7 @@
   //grid-auto-columns: max-content;
   display: grid;
   grid-auto-flow: row;
-  grid-template-columns: repeat(6, minmax(max-content, 1fr));
+  grid-template-columns: repeat(5, minmax(max-content, 1fr));
   grid-gap: 0 16px;
 
   box-sizing: border-box;
@@ -21,7 +21,11 @@
     padding: 4px 16px;
     border: none;
     width: 100%;
-}
+  }
+
+  .currentChapter {
+    background: steelblue;
+  }
 
   /* Контейнер <div> - необходим для размещения выпадающего содержимого */
   .chapterContainer {
@@ -30,20 +34,20 @@
     font-size: 1.4em;
     width: max-content;
 
-}
+  }
 
   /* Выпадающее содержимое (скрыто по умолчанию) */
   .dropdown-content {
     visibility: hidden;
-    position:absolute;
+    position: absolute;
     display: grid;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(2, 1fr);
     //position: absolute;
     background-color: white;
     width: 100%;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1000;
-}
+  }
 
   /* Ссылки внутри выпадающего списка */
   .dropdown-content * {
@@ -55,14 +59,20 @@
     border: none;
     text-align: left;
 
-}
+  }
 
   /* Изменение цвета выпадающих ссылок при наведении курсора */
-  .dropdown-content *:hover {background-color: #ddd;}
+  .dropdown-content *:hover {
+    background-color: #ddd;
+  }
 
   /* Показать выпаdдающее меню при наведении курсора */
-  .chapterContainer:hover  .dropdown-content {visibility: visible;}
+  .chapterContainer:hover .dropdown-content {
+    visibility: visible;
+  }
 
   /* Изменение цвета фона кнопки раскрывающегося списка при отображении содержимого раскрывающегося списка */
-  .chapterContainer:hover .chapterButton {background-color: #ddd;}
+  .chapterContainer:hover .chapterButton {
+    background-color: #ddd;
+  }
 }

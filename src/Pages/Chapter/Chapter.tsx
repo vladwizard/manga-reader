@@ -1,27 +1,18 @@
 import React, {useEffect, useRef, useState} from "react";
-import {Link, useNavigate, useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import axios from "axios";
 
 import './Chapter.css'
 
-
-
-import {getChapterByLanguage, getChapters} from "../../orders";
-import {useSelector} from 'react-redux'
-import {RootState} from "../../Redux/store";
 import ChangingLanguageBlock from "../../Components/ChangingLanguageBlock/ChangingLanguageBlock";
-
 import ChapterArea from "../../Components/ChapterArea/ChapterArea";
 
 export default function () {
-    const id: any = useParams().id;
+    const idManga: any = useParams().idManga;
     const idChapter = useParams().idChapter;
 
     const [hash, setHash] = useState('');
     const [pages, setPages] = useState([]);
-
-    const [chapters, setChapters] = useState<{ title: string, ids: string[] }[]>([]);
-
 
     useEffect(() => {
             axios.get('https://api.mangadex.org/at-home/server/' + idChapter).then(res => {
@@ -29,7 +20,6 @@ export default function () {
                 setPages(res.data.chapter.data)
                 setHash(res.data.chapter.hash)
             })
-            getChapters(id, setChapters)
         }, [idChapter]
     )
 
@@ -39,9 +29,6 @@ export default function () {
 
     const [menuToggle, setMenuToggle] = useState(false);
 
-    const language = useSelector((state: RootState) => state.language.defaultLanguage)
-
-    const navigation = useNavigate()
     return (
         <div className='chapterPage'>
             <div className={['menu', menuToggle ? 'activeMenu' : ''].join(' ')}>
@@ -61,14 +48,14 @@ export default function () {
                     </div>
 
                     <Link className='mangaPageLink link' to={'/'}>Main</Link>
-                    <Link className='mangaPageLink link' to={'/' + id}>Manga's page</Link>
-                   <ChapterArea idManga={id}/>
+                    <Link className='mangaPageLink link' to={'/' + idManga}>Manga's page</Link>
+                    <ChapterArea idManga={idManga}/>
 
                 </div>
                 }
             </div>
             <div className='pageArea'>
-                {pages.map((url, index) => <img key={index} src={getUrl(hash, url)}/>)}
+                {pages.map((url, index) => <img alt={''} key={index} src={getUrl(hash, url)}/>)}
             </div>
         </div>
     )
