@@ -15,7 +15,7 @@ File's formates: scss and ts/tsx.
 ![Screenshot 2022-07-15 12 29 11](https://user-images.githubusercontent.com/72702845/179195863-a7bf151c-d31d-4685-80aa-b77ca13d5a0d.png)
 ## Reading page menu
 ![Screenshot 2022-07-15 12 32 18](https://user-images.githubusercontent.com/72702845/179196409-73725695-e9b4-4134-a3e4-183b7961ebb9.png)
-#Adapting layout Iphone 12 pro sceens
+# Adapting layout Iphone 12 pro sceens
 ## Main page
 ![Screenshot 2022-07-15 12 37 13](https://user-images.githubusercontent.com/72702845/179197275-4e7d54d9-4931-4cf2-a34e-96bf2cb77e19.png)
 ## Manga page
