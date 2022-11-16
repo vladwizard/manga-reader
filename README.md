@@ -1,5 +1,5 @@
 # Manga reader
-Application for reading manga, connected to the backend mangadex.org, implemented selection, search, chapter selection. Used React Router, axios, lodash.denounce, redux toolkit. TS don`t use
+Application for reading manga, connected to the backend mangadex.org, implemented selection, search, chapter selection, language for reading. Used React Router, axios, lodash.denounce, redux toolkit. TS don`t use
 
 Run only due to because CORS policy of backend
 ## Main page
