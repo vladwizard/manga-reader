@@ -1,12 +1,9 @@
-import {changeDefaultLanguage} from "../../Redux/Slices/language";
-import React from "react";
-import {useSelector, useDispatch} from 'react-redux'
-import {RootState} from "../../Redux/store";
+import React, {useState} from "react";
 import './ChangingLanguageBlock.css'
 
 export default function (){
-    const defaultLanguage = useSelector((state: RootState) => state.language.defaultLanguage);
-    const dispatch = useDispatch();
+    const [defaultLanguage,setDefaultLanguage] = useState('en')
+
     return (
         <div className="changingLanguageBlock">
             <button className="dropbtn">{defaultLanguage}</button>
@@ -15,7 +12,7 @@ export default function (){
                         if (item != defaultLanguage)
                             return <button key={item}
                                            onClick={() => {
-                                               dispatch(changeDefaultLanguage(item))
+                                               setDefaultLanguage(item)
                                            }}>{item}</button>
                     }
                 )

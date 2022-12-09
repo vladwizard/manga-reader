@@ -1,9 +1,10 @@
-import React, {useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import axios from "axios";
 import './Main.css'
 
 import MangaBlock from "../../Components/MangaBlock/MangaBlock";
 import debounce from "lodash.debounce";
+import {MangaData} from "../../@types";
 
 
 export default function ({findLine}: { findLine: string }) {
@@ -14,26 +15,26 @@ export default function ({findLine}: { findLine: string }) {
 
 
     const [page, setPage] = useState(0);
-    // const [scroll, setScroll] = useState(0);
-    // window.addEventListener('scroll', function () {
-    // //     setScroll(window.pageYOffset);
-    // // });
-    // useEffect(() => console.log(scroll), [scroll])
 
     const nInPage = 10
 
-    const mangaApi = 'https://api.mangadex.org/manga?' + ['limit=' + nInPage, findLine ? '&title=' + findLine : '', '&offset=' + nInPage * (page + 1)].join('&');
-
-
-    const [mangas, setMangas] = useState<any>([])
+    const [mangas, setMangas] = useState(new Array<MangaData>())
 
     function getMangas(handlePage: number = page) {
         axios.get('https://api.mangadex.org/manga?' + ['limit=' + nInPage, findLine ? '&title=' + findLine : '', '&offset=' + nInPage * handlePage].join('&'))
             .then(res => {
-                const data = res.data;
-                console.log(res)
+                let newMangas = new Array<MangaData>();
+                res.data.data.forEach((item:any)=>{
+                    let newManga = {} as MangaData;
+                    newMangas.push(newManga)
 
-                setMangas(data.data);
+                    newManga.id = item.id
+                    newManga.title = Object.values(item.attributes.title)[0] as string;
+                    newManga.description = item.attributes.description.en
+                    newManga.coverArt_id = item.relationships.find((item: any) => item.type == 'cover_art').id;
+                })
+                setMangas(newMangas);
+                console.log(newMangas)
             })
     }
 
@@ -65,7 +66,7 @@ export default function ({findLine}: { findLine: string }) {
                 >{paginationButtonSvg}</button>
 
                 <div className='mangaArea'>
-                    {mangas.map((item: object, i: number) => <MangaBlock key={i} mangaData={item}/>)}
+                    {mangas.map((item, i) => <MangaBlock key={i} mangaData={item}/>)}
 
                 </div>
                 <button className='paginationButton rightButton'

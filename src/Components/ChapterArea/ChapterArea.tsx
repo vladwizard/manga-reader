@@ -1,23 +1,18 @@
 import {getChapterByLanguage, getChapters, getLanguagesOfChapters} from "../../orders";
-import {changeDefaultLanguage} from "../../Redux/Slices/language";
 import React, {useEffect, useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {RootState} from "../../Redux/store";
 import {useNavigate, useParams} from "react-router-dom";
 import './ChapterArea.css'
 
 export default function ({idManga}: { idManga: string }) {
+    const idChapter = useParams().idChapter;
 
     const [chapters, setChapters] = useState<{ title: string, ids: string[] }[]>([]);
-
-    const idChapter = useParams().idChapter;
 
     useEffect(() => getChapters(idManga, setChapters), [])
 
     const [possibleLanguages, setPossibleLanguages] = useState<{ language: string, id: string }[]>([]);
 
-    const defaultLanguage = useSelector((state: RootState) => state.language.defaultLanguage);
-    const dispatch = useDispatch()
+    const defaultLanguage = 'en';
     const navigation = useNavigate()
 
     const [active, setActive] = useState(-1);
@@ -57,7 +52,6 @@ export default function ({idManga}: { idManga: string }) {
                                     return <button key={index}
                                                    onClick={() => {
                                                        navigation('/' + idManga + '/' + item.id)
-                                                       dispatch(changeDefaultLanguage(item.language))
                                                    }}>{item.language}</button>
 
                                 }

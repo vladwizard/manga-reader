@@ -1,12 +1,15 @@
-import React, {useEffect, useState} from "react";
-import {useParams, useNavigate} from "react-router-dom";
+import {useEffect, useState} from "react";
+import {useParams} from "react-router-dom";
 import axios from "axios";
 import './Manga.css';
 
 import ChangingLanguageBlock from '../../Components/ChangingLanguageBlock/ChangingLanguageBlock'
 import ChapterArea from "../../Components/ChapterArea/ChapterArea";
+import {MangaData} from "../../@types";
 
 export default function () {
+
+    const id = useParams().idManga as string;
 
     const coverImageApi = (id: string, fileName: string) => {
         return 'https://uploads.mangadex.org/covers/' + id + '/' + fileName
@@ -14,11 +17,16 @@ export default function () {
 
     useEffect(() => {
         axios.get('https://api.mangadex.org/manga/' + id).then(res => {
-            setMangaData(res.data.data)
-            // console.log(res.data)
-            let cover_id: string = res.data.data.relationships.find((item: any) => item.type == 'cover_art').id;
+            let data = res.data.data
 
-            axios.get('https://api.mangadex.org/cover/' + cover_id,)
+            let newMangaData = {} as MangaData
+            newMangaData.title = data?.attributes?.title.en
+            newMangaData.description = data?.attributes?.description.en;
+            newMangaData.coverArt_id = data.relationships.find((item: any) => item.type == 'cover_art').id;
+
+            setMangaData(newMangaData)
+
+            axios.get('https://api.mangadex.org/cover/' + newMangaData.coverArt_id,)
                 .then(res => {
                         let cover = res.data.data.attributes.fileName;
                         setCoverImage(coverImageApi(id, cover))
@@ -28,47 +36,11 @@ export default function () {
 
     }, [])
 
-    //Вставка пусткых клеток в chapterArea
-    // useEffect(() => {
-    //         if (chapters != null) {
-    //
-    //             // let hidden = ['hidden', ''];
-    //             // let nNormal = 0;
-    //             // for (let i = 0; i < chapters.length; i++) {
-    //             // if (chapters[i][0].indexOf('.') == -1) chapters[i][0] +='  '
-    //             // }
-    //             // if (chapters.length > 9) {
-    //             //     for (let i = 0; i < chapters.length; i++) {
-    //             //
-    //             //         if (chapters[i][0].indexOf('.') == -1)
-    //             //         if (parseInt(chapters[i][0].match(/(\d+)$/)![0]) % 10 != i % 10)
-    //             //             chapters.splice(i, 0, hidden)
-    //             //     }
-    //             // }
-    //             // if (nNormal != 0) {
-    //             //
-    //             //     for (let i = 0; i < chapters.length; i++) {
-    //             //
-    //             //         if (chapters[i][0].indexOf('.') != -1) {
-    //             //             chapters.splice(i, 0, hidden)
-    //             //             break
-    //             //         }
-    //             //     }
-    //             // }
-    //         }
-    //     }
-    //     ,
-    //     [chapters]
-    // )
 
-    const id = useParams().idManga as string;
-    const [mangaData, setMangaData] = useState<any>();
+
+    const [mangaData, setMangaData] = useState<MangaData>({} as MangaData);
 
     const [coverImage, setCoverImage] = useState<string>('');
-
-    const title = mangaData?.attributes?.title.en;
-
-    const description = mangaData?.attributes?.description.en;
 
     return (
 
@@ -76,8 +48,8 @@ export default function () {
             <div className='top'>
                 <div className='cover' style={{backgroundImage: 'url('+coverImage+')'}}
                      />
-                <p className='title'>{title}</p>
-                <p className='description'>{description}</p>
+                <p className='title'>{mangaData.title}</p>
+                <p className='description'>{mangaData.description}</p>
 
             </div>
             <div>

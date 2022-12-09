@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from "react";
+import {useEffect, useState} from "react";
 import {Link, useParams} from "react-router-dom";
 import axios from "axios";
 
@@ -7,18 +7,26 @@ import './Chapter.css'
 import ChangingLanguageBlock from "../../Components/ChangingLanguageBlock/ChangingLanguageBlock";
 import ChapterArea from "../../Components/ChapterArea/ChapterArea";
 
+type Chapter = {
+    hash:string,
+    pages:string[]
+}
 export default function () {
     const idManga: any = useParams().idManga;
     const idChapter = useParams().idChapter;
 
-    const [hash, setHash] = useState('');
-    const [pages, setPages] = useState([]);
+    const [chapterData,setChapterData] = useState<Chapter>()
 
     useEffect(() => {
             axios.get('https://api.mangadex.org/at-home/server/' + idChapter).then(res => {
                 console.log(res)
-                setPages(res.data.chapter.data)
-                setHash(res.data.chapter.hash)
+                let newChapter = {} as Chapter
+
+                let data = res.data.chapter
+                newChapter.hash = data.hash;
+                newChapter.pages = data.data
+
+                setChapterData(newChapter)
             })
         }, [idChapter]
     )
@@ -55,7 +63,7 @@ export default function () {
                 }
             </div>
             <div className='pageArea'>
-                {pages.map((url, index) => <img alt={''} key={index} src={getUrl(hash, url)}/>)}
+                {chapterData?.pages.map((url, index) => <img alt={''} key={index} src={getUrl(chapterData.hash, url)}/>)}
             </div>
         </div>
     )
