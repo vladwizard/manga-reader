@@ -12,7 +12,8 @@ export default function ({idManga}: { idManga: string }) {
 
     const [possibleLanguages, setPossibleLanguages] = useState<{ language: string, id: string }[]>([]);
 
-    const defaultLanguage = 'en';
+    const defaultLanguage = document.cookie.split('=')[1];
+
     const navigation = useNavigate()
 
     const [active, setActive] = useState(-1);
@@ -20,7 +21,7 @@ export default function ({idManga}: { idManga: string }) {
     return (
         <div className='chapterArea'>
             {chapters.map((item, index) => {
-                    return <div className='chapterContainer'>
+                    return <div className='chapterContainer' key={index}>
                         <button
                             className={['chapterButton', idChapter != undefined ? item.ids.indexOf(idChapter) != -1 ? 'currentChapter' : '' : ''].join(' ')}
                             key={index}

@@ -6,7 +6,6 @@ export function getAllChapters(id: string, setChapters: any) {
     let indexLoadChapter = 0;
 
     axios.get('https://api.mangadex.org/manga/' + id + '/aggregate').then(res => {
-        console.log(res.data)
         Object.values(res.data.volumes).forEach((volume: any, indexValume) => {
             Object.values(volume.chapters).forEach(
                 (chapter: any) => {
@@ -21,7 +20,6 @@ export function getAllChapters(id: string, setChapters: any) {
                     [chapter.id, ...chapter.others].forEach((item) => {
                             setTimeout(() => {
                                 axios.get('https://api.mangadex.org/chapter/' + item).then(res => {
-                                    // console.log(123, res.data)
                                     let language: string = res.data.data.attributes.translatedLanguage
 
                                     r.push({
@@ -46,9 +44,7 @@ export function getAllChapters(id: string, setChapters: any) {
 export function getChapters(id: string, setChapters: any) {
     let r: { title: string, ids: string[] }[] = [];
 
-
     axios.get('https://api.mangadex.org/manga/' + id + '/aggregate').then(res => {
-        console.log(res.data)
         Object.values(res.data.volumes).forEach((volume: any, indexValume) => {
             Object.values(volume.chapters).forEach(
                 (chapter: any) => {
