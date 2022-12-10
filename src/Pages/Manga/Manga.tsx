@@ -53,9 +53,9 @@ export default function () {
 
             </div>
             <div>
-                <ChangingLanguageBlock/>
-                <ChapterArea idManga={id}/>
+                <div style={{position:"absolute",transform:'translate(-100%)'}}><ChangingLanguageBlock/></div>
 
+                <ChapterArea idManga={id}/>
             </div>
         </div>
 

@@ -8,14 +8,14 @@ import ChangingLanguageBlock from "../../Components/ChangingLanguageBlock/Changi
 import ChapterArea from "../../Components/ChapterArea/ChapterArea";
 
 type Chapter = {
-    hash:string,
-    pages:string[]
+    hash: string,
+    pages: string[]
 }
 export default function () {
     const idManga: any = useParams().idManga;
     const idChapter = useParams().idChapter;
 
-    const [chapterData,setChapterData] = useState<Chapter>()
+    const [chapterData, setChapterData] = useState<Chapter>()
 
     useEffect(() => {
             axios.get('https://api.mangadex.org/at-home/server/' + idChapter).then(res => {
@@ -51,19 +51,15 @@ export default function () {
                 </button>
                 {menuToggle &&
                 <div className='extendedMenu'>
-                    <div className='changingLanguageBlockContainer'>
-                        <ChangingLanguageBlock/>
-                    </div>
-
                     <Link className='mangaPageLink link' to={'/'}>Main</Link>
                     <Link className='mangaPageLink link' to={'/' + idManga}>Manga's page</Link>
                     <ChapterArea idManga={idManga}/>
-
                 </div>
                 }
             </div>
             <div className='pageArea'>
-                {chapterData?.pages.map((url, index) => <img alt={''} key={index} src={getUrl(chapterData.hash, url)}/>)}
+                {chapterData?.pages.map((url, index) => <img alt={''} key={index}
+                                                             src={getUrl(chapterData.hash, url)}/>)}
             </div>
         </div>
     )

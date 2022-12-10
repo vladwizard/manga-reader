@@ -5,7 +5,8 @@ $text-color: white;
 .header {
   box-sizing: border-box;
   width: 100%;
-  height: 1.5em;
+
+  padding: 1vh;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   background: gainsboro;
@@ -29,8 +30,8 @@ $text-color: white;
     margin: auto;
     background: $lighter-color;
     padding: 0 10px;
-    border-radius: 0.6em;
-    height: 75%;
+    border-radius: 5px;
+    height: 30px;
     min-width: 320px;
     width: 50%;
     font-size: 0.5em;

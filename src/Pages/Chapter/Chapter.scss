@@ -31,21 +31,11 @@
       display: flex;
       flex-direction: column;
       height: max-content;
-      max-height: 80%;
-
-      .changingLanguageBlockContainer {
-        height: 0;
-      }
-
-      .changingLanguageBlock {
-        transform: translate(0, -100%);
-        float: right;
-      }
+      max-height: 90%;
 
       > * {
 
         box-sizing: border-box;
-
 
       }
 
@@ -63,15 +53,18 @@
         background: #ddd;
       }
 
-      .chapterArea {
-        grid-template-columns: 1fr;
-        padding: 0;
-        >.chapterContainer{
-          width: auto;
-        }
+
+    }
+    .chapterArea {
+      flex: 1;
+
+      grid-template-columns: 1fr 1fr;
+      padding: 0;
+      overflow: auto;
+
+      >.chapterContainer{
+        width: auto;
       }
-
-
     }
   }
 

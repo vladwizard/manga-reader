@@ -1,7 +1,10 @@
 $border-radius: 16px;
 
 .MangaPageWrapper {
-  margin: 10vmin auto 0 auto;
+
+  @media (orientation: landscape) {
+    margin: 10vmin auto 0 auto;
+  }
   padding-bottom: 50vh;
   width: 100%;
   max-width: 1280px;
@@ -26,6 +29,10 @@ $border-radius: 16px;
       float: left;
       margin-right: 10px;
       background-size: cover;
+      @media (max-width: 600px) {
+        width: 150px;
+        height: 200px;
+      }
     }
 
     .title {
@@ -55,65 +62,46 @@ $border-radius: 16px;
 
   .chapterArea {
     border-radius: 0 0 $border-radius $border-radius;
-  }
-
-  @media (orientation: portrait) {
-    width: 100vw;
-    font-size: 0.7rem;
-    margin-top: 0;
-    padding: 5px;
-    .top {
-      height: max-content;
-      display: block;
-
-      img {
-        float: left;
-        width: 40vw;
-        height: 60vw;
-        margin-right: 5px;
-      }
-
-      .title {
-        font-size: 2em;
-      }
-    }
-    .chapterArea {
-
-      height: max-content;
-
-      background: gainsboro;
-
-      display: grid;
-      grid-auto-flow: row;
-      grid-template-columns: repeat(2, minmax(max-content, 1fr));
-      grid-template-rows: max-content;
-
-      padding: 8px 8px;
-      grid-gap: 0 8px;
-      overflow: auto;
-      box-sizing: border-box;
-
-      .chapterLink {
-
-      }
-    }
 
   }
-  @media (orientation: landscape) and (max-width: 900px) {
-    font-size: 0.7rem;
-    margin: 0;
-    padding: 5px;
 
-    .top {
-      height: 250px;
-
-      img {
-        width: 200px;
-        height: 100%;
-        float: left;
-        margin-right: 10px;
-      }
-    }
-  }
+  //@media (orientation: portrait) {
+  //  width: 100vw;
+  //  font-size: 0.7rem;
+  //  margin-top: 0;
+  //  padding: 5px;
+  //  .top {
+  //    height: max-content;
+  //    display: block;
+  //
+  //    img {
+  //      float: left;
+  //      width: 40vw;
+  //      height: 60vw;
+  //      margin-right: 5px;
+  //    }
+  //
+  //    .title {
+  //      font-size: 2em;
+  //    }
+  //  }
+  //
+  //}
+  //@media (orientation: landscape) and (max-width: 900px) {
+  //  font-size: 0.7rem;
+  //  margin: 0;
+  //  padding: 5px;
+  //
+  //  .top {
+  //    height: 250px;
+  //
+  //    img {
+  //      width: 200px;
+  //      height: 100%;
+  //      float: left;
+  //      margin-right: 10px;
+  //    }
+  //  }
+  //}
 
 }

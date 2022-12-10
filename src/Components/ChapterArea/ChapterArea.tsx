@@ -2,6 +2,7 @@ import {getChapterByLanguage, getChapters, getLanguagesOfChapters} from "../../o
 import {useEffect, useState} from "react";
 import {useNavigate, useParams} from "react-router-dom";
 import './ChapterArea.css'
+import ChangingLanguageBlock from "../ChangingLanguageBlock/ChangingLanguageBlock";
 
 export default function ({idManga}: { idManga: string }) {
     const idChapter = useParams().idChapter;

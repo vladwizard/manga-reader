@@ -24,14 +24,7 @@
   display: flex;
   flex-direction: column;
   height: max-content;
-  max-height: 80%;
-}
-.chapterPage > .menu .extendedMenu .changingLanguageBlockContainer {
-  height: 0;
-}
-.chapterPage > .menu .extendedMenu .changingLanguageBlock {
-  transform: translate(0, -100%);
-  float: right;
+  max-height: 90%;
 }
 .chapterPage > .menu .extendedMenu > * {
   box-sizing: border-box;
@@ -48,11 +41,13 @@
 .chapterPage > .menu .extendedMenu .mangaPageLink:hover {
   background: #ddd;
 }
-.chapterPage > .menu .extendedMenu .chapterArea {
-  grid-template-columns: 1fr;
+.chapterPage > .menu .chapterArea {
+  flex: 1;
+  grid-template-columns: 1fr 1fr;
   padding: 0;
+  overflow: auto;
 }
-.chapterPage > .menu .extendedMenu .chapterArea > .chapterContainer {
+.chapterPage > .menu .chapterArea > .chapterContainer {
   width: auto;
 }
 .chapterPage .activeMenu {

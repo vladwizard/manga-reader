@@ -1,16 +1,15 @@
+
+
 .chapterArea {
   padding: 16px 16px;
   width: 100%;
 
+
   background: #e9e9e9;
 
-  //display: grid;
-  //grid-auto-flow: column;
-  //grid-template-rows: repeat(10, minmax(max-content, 1fr));
-  //grid-auto-columns: max-content;
   display: grid;
   grid-auto-flow: row;
-  grid-template-columns: repeat(5, minmax(max-content, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
   grid-gap: 0 16px;
 
   box-sizing: border-box;
@@ -42,7 +41,6 @@
     position: absolute;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    //position: absolute;
     background-color: white;
     width: 100%;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
