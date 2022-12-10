@@ -1,7 +1,6 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
 import './Main.css'
-
 import MangaBlock from "../../Components/MangaBlock/MangaBlock";
 import debounce from "lodash.debounce";
 import {MangaData} from "../../@types";
@@ -34,7 +33,6 @@ export default function ({findLine}: { findLine: string }) {
                     newManga.coverArt_id = item.relationships.find((item: any) => item.type == 'cover_art').id;
                 })
                 setMangas(newMangas);
-                console.log(newMangas)
             })
     }
 
@@ -54,30 +52,26 @@ export default function ({findLine}: { findLine: string }) {
     }
 
     return (
-        <div className='MainPage'>
-            <div className='content'>
+        <div className='MangaArea'>
 
-                <button className='paginationButton leftButton' style={{'transform': 'scale(-1,1)'}}
-                        onClick={() => {
-                            if (page > 0) {
-                                changePage(page - 1)
-                            }
-                        }}
-                >{paginationButtonSvg}</button>
+            <button className='paginationButton leftButton' style={{'transform': 'scale(-1,1)'}}
+                    onClick={() => {
+                        if (page > 0) {
+                            changePage(page - 1)
+                        }
+                    }}
+            >{paginationButtonSvg}</button>
 
-                <div className='mangaArea'>
-                    {mangas.map((item, i) => <MangaBlock key={i} mangaData={item}/>)}
+            <div className='mangaArea'>
+                {mangas.map((item, i) => <MangaBlock key={i} mangaData={item}/>)}
 
-                </div>
-                <button className='paginationButton rightButton'
-                        onClick={() => {
-                            changePage(page + 1)
-                        }}
-                >{paginationButtonSvg}</button>
-                <p className='pageNumber'>Page {page + 1}</p>
             </div>
-
-
+            <button className='paginationButton rightButton'
+                    onClick={() => {
+                        changePage(page + 1)
+                    }}
+            >{paginationButtonSvg}</button>
+            <p className='pageNumber'>Page {page + 1}</p>
         </div>
     )
 }

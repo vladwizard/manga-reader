@@ -29,11 +29,11 @@ export default function ({mangaData}: { mangaData: MangaData }) {
 
             {mangaData.title && <div className='titleBlock'>
                 <h2 className="title"
-                    style={{'fontSize': (1.4 - 0.3 * Math.trunc(mangaData.title.length / 30)) + 'em'}}>{mangaData.title}</h2>
+                    style={{'fontSize': (1.4 - 0.3 * Math.trunc(mangaData.title.length / 60)) + 'em'}}>{mangaData.title}</h2>
             </div>
             }
             <div className='coverBlock'
-                 style={{'backgroundImage': 'url(' + coverImage + ')'}}
+                 style={{backgroundImage: 'url(' + coverImage + ')'}}
             >
             </div>
         </Link>

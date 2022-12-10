@@ -1,121 +1,78 @@
+$desktop-width: 1600px;
 
-.MainPage {
+.MangaArea {
+  display: grid;
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  grid-template: ". leftButton pages rightButton ." auto "mangaArea mangaArea mangaArea mangaArea mangaArea" auto;
 
-  > .content {
-
-    margin-top: 5vh;
-    display: grid;
-
+  @media (min-width: $desktop-width) {
+    max-height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     grid-template: "leftButton mangaArea rightButton" auto ". pages ." auto;
-
-    .leftButton {
-      grid-area: leftButton;
-    }
-
-    .rightButton {
-      grid-area: rightButton;
-    }
-
-    .paginationButton {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: auto;
-      height: 20vmin;
-      width: 10vmin;
-      max-height: 200px;
-      max-width: 100px;
-      border-radius: 0.8em;
-    }
-
-    .mangaArea {
-      grid-area: mangaArea;
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      grid-auto-rows: 350px;
-      grid-gap: 2vmin;
-      padding: 0 5%;
-      //max-width: 1280px;
-      width: 1280px;
-      //min-height: calc(350px * 2);
-      height: 707.75px;
-    }
-
-    .pageNumber {
-      grid-area: pages;
-      font-size: 1.5em;
-      width: max-content;
-      height: min-content;
-      margin: 20px auto 0 auto;
-
-    }
+    gap: 0 20px;
+  }
 
 
-    @media (orientation: landscape) and (max-width: 900px) {
-      font-size: 0.5rem;
-      height: 300px;
-      width: 86%;
-      .mangaArea {
-        grid-area: mangaArea;
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        grid-auto-rows: 145px;
-        grid-gap: 2vmin;
-        margin: 0 auto;
-        padding: 0 20px;
-        width: 100%;
-        box-sizing: border-box;
-        height: max-content;
-      }
-      .paginationButton {
-        margin: auto;
-        height: 80px;
-        width: 40px;
-        * {
-          width: 40px;
-        }
-      }
+  .leftButton {
+    grid-area: leftButton;
+  }
+
+  .rightButton {
+    grid-area: rightButton;
+  }
+
+  .paginationButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.8em;
+    margin: auto;
+    @media (min-width: $desktop-width) {
+      height: 200px;
+      width: 120px;
     }
     @media (orientation: portrait) {
-      grid-template:
-        ". leftButton pages rightButton ."
-        auto "mangaArea mangaArea mangaArea mangaArea mangaArea" auto;
-      .paginationButton {
-        margin: auto;
-        height: 40px;
-        width: 40px;
-
-        * {
-          width: 30px;
-        }
-      }
-      grid-gap: 1vmin;
-
-      margin-top: 1vmin;
-      .mangaArea {
-
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-auto-rows: 300px;
-        grid-gap: 5px;
-        padding: 5px;
-        width: 100vw;
-        font-size: 0.7rem;
-
-      }
-      .pageNumber {
-
-        margin: 0 10px;
-
-      }
+      height: 60px;
+      width: 60px;
     }
+  }
+
+  .mangaArea {
+    grid-area: mangaArea;
+    display: grid;
+
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-auto-rows: 350px;
+
+    grid-gap: 5px;
+
+    font-size: 0.7rem;
+    @media  (max-width: 500px) {
+      grid-template-columns: repeat(2, 1fr);
+      grid-auto-rows: 70vw;
+    }
+    @media  (min-width: $desktop-width) {
+
+      max-width: 100vw;
+      grid-template-columns: repeat(5, 250px);
+      grid-auto-rows: 350px;
+      grid-gap: 20px;
+    }
+
 
   }
 
-}
+  .pageNumber {
+    grid-area: pages;
+    font-size: 1.8em;
+    width: max-content;
+    height: min-content;
+    padding: 0 15px;
+    margin: auto;
+  }
 
+}
 
